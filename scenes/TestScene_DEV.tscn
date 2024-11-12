@@ -1,3 +1,299 @@
-[gd_scene format=3 uid="uid://6moaj0bk4bpi"]
+[gd_scene load_steps=11 format=3 uid="uid://6moaj0bk4bpi"]
+
+[ext_resource type="PackedScene" uid="uid://jfw74y8eg8hn" path="res://prefabs/Player_prefab.tscn" id="1_7hi53"]
+[ext_resource type="PackedScene" uid="uid://dh2av4d1xjup8" path="res://prefabs/Coin_prefab.tscn" id="1_b21j8"]
+[ext_resource type="PackedScene" uid="uid://cujsxvsn7qmw3" path="res://prefabs/DamagableBox_prefab.tscn" id="2_0lr4j"]
+[ext_resource type="PackedScene" uid="uid://b4gj8p53287vt" path="res://prefabs/Spikes_prefab.tscn" id="4_im7ar"]
+[ext_resource type="PackedScene" uid="uid://epq76chxbh1b" path="res://prefabs/HealthPack_prefab.tscn" id="4_mew0b"]
+
+[sub_resource type="Gradient" id="Gradient_32jkx"]
+colors = PackedColorArray(1, 0, 0, 0.235294, 1, 0, 0, 0.235294)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2k14p"]
+gradient = SubResource("Gradient_32jkx")
+
+[sub_resource type="Gradient" id="Gradient_k0upc"]
+colors = PackedColorArray(7.21961e-07, 0.360728, 0.534106, 1, 0.847059, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l51ey"]
+gradient = SubResource("Gradient_k0upc")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eldvc"]
+size = Vector2(64, 64)
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Info" type="Node2D" parent="."]
+position = Vector2(75, 212)
+
+[node name="Controls" type="Label" parent="Info"]
+offset_right = 148.0
+offset_bottom = 101.0
+text = "Controls:
+- Movement: WASD
+- Dash: LShift
+- Jump: Space"
+
+[node name="Movement" type="Label" parent="Info"]
+offset_left = 250.0
+offset_right = 522.0
+offset_bottom = 153.0
+text = "Movement features:
+- Coyote jump
+- Wall drag
+- Double jump
+- Dash
+- Air controll
+"
+
+[node name="Map" type="Node2D" parent="."]
+
+[node name="Interactables" type="Node2D" parent="Map"]
+
+[node name="Coin" parent="Map/Interactables" instance=ExtResource("1_b21j8")]
+position = Vector2(338, 456)
+
+[node name="Coin8" parent="Map/Interactables" instance=ExtResource("1_b21j8")]
+position = Vector2(14, 539)
+
+[node name="Coin2" parent="Map/Interactables" instance=ExtResource("1_b21j8")]
+position = Vector2(879, 304)
+
+[node name="Coin3" parent="Map/Interactables" instance=ExtResource("1_b21j8")]
+position = Vector2(406, 73)
+
+[node name="Coin4" parent="Map/Interactables" instance=ExtResource("1_b21j8")]
+position = Vector2(-58, -288)
+
+[node name="Coin5" parent="Map/Interactables" instance=ExtResource("1_b21j8")]
+position = Vector2(1054, -85)
+
+[node name="Coin6" parent="Map/Interactables" instance=ExtResource("1_b21j8")]
+position = Vector2(-900, 530)
+
+[node name="Coin7" parent="Map/Interactables" instance=ExtResource("1_b21j8")]
+position = Vector2(1541, 530)
+
+[node name="DamagableBox" parent="Map/Interactables" instance=ExtResource("2_0lr4j")]
+position = Vector2(714, 526)
+
+[node name="HealthPack" parent="Map/Interactables" instance=ExtResource("4_mew0b")]
+position = Vector2(2, 349)
+
+[node name="Spikes" parent="Map/Interactables" instance=ExtResource("4_im7ar")]
+position = Vector2(571, 580)
+
+[node name="Spikes2" parent="Map/Interactables" instance=ExtResource("4_im7ar")]
+position = Vector2(802, 580)
+
+[node name="Spikes3" parent="Map/Interactables" instance=ExtResource("4_im7ar")]
+position = Vector2(892, 580)
+
+[node name="Spikes6" parent="Map/Interactables" instance=ExtResource("4_im7ar")]
+position = Vector2(1177, 580)
+scale = Vector2(5.32, 1)
+
+[node name="Spikes5" parent="Map/Interactables" instance=ExtResource("4_im7ar")]
+position = Vector2(-75, 580)
+
+[node name="Spikes4" parent="Map/Interactables" instance=ExtResource("4_im7ar")]
+position = Vector2(58, -141)
+rotation = 0.785398
+
+[node name="SpawnPoint" type="Node2D" parent="Map"]
+position = Vector2(250, 545)
+scale = Vector2(1.05217, 0.44)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/SpawnPoint"]
+texture = SubResource("GradientTexture2D_2k14p")
+
+[node name="Label" type="Label" parent="Map/SpawnPoint"]
+offset_left = -29.0
+offset_top = -30.0
+offset_right = 28.0
+offset_bottom = -7.0
+text = "SPAWN"
+
+[node name="Squares" type="Node2D" parent="Map"]
+
+[node name="FloorSquare" type="StaticBody2D" parent="Map/Squares"]
+position = Vector2(400, 528)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/FloorSquare"]
+texture = SubResource("GradientTexture2D_l51ey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/FloorSquare"]
+shape = SubResource("RectangleShape2D_eldvc")
+
+[node name="FloorSquare2" type="StaticBody2D" parent="Map/Squares"]
+position = Vector2(464, 528)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/FloorSquare2"]
+texture = SubResource("GradientTexture2D_l51ey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/FloorSquare2"]
+shape = SubResource("RectangleShape2D_eldvc")
+
+[node name="FloorSquare3" type="StaticBody2D" parent="Map/Squares"]
+position = Vector2(464, 464)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/FloorSquare3"]
+texture = SubResource("GradientTexture2D_l51ey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/FloorSquare3"]
+shape = SubResource("RectangleShape2D_eldvc")
+
+[node name="Column" type="StaticBody2D" parent="Map/Squares"]
+position = Vector2(66, 501)
+rotation = 0.785398
+scale = Vector2(4, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/Column"]
+texture = SubResource("GradientTexture2D_l51ey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Column"]
+shape = SubResource("RectangleShape2D_eldvc")
+
+[node name="Column3" type="StaticBody2D" parent="Map/Squares"]
+position = Vector2(118, -67)
+rotation = 0.785398
+scale = Vector2(4, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/Column3"]
+texture = SubResource("GradientTexture2D_l51ey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Column3"]
+shape = SubResource("RectangleShape2D_eldvc")
+
+[node name="Column2" type="StaticBody2D" parent="Map/Squares"]
+position = Vector2(676, 28)
+rotation = 1.5708
+scale = Vector2(3, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/Column2"]
+texture = SubResource("GradientTexture2D_l51ey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Column2"]
+shape = SubResource("RectangleShape2D_eldvc")
+
+[node name="Platform" type="StaticBody2D" parent="Map/Squares"]
+position = Vector2(617, 382)
+scale = Vector2(1.2, 0.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/Platform"]
+texture = SubResource("GradientTexture2D_l51ey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Platform"]
+shape = SubResource("RectangleShape2D_eldvc")
+
+[node name="Platform2" type="StaticBody2D" parent="Map/Squares"]
+position = Vector2(802, 382)
+scale = Vector2(1.2, 0.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/Platform2"]
+texture = SubResource("GradientTexture2D_l51ey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Platform2"]
+shape = SubResource("RectangleShape2D_eldvc")
+
+[node name="Platform3" type="StaticBody2D" parent="Map/Squares"]
+position = Vector2(978, 360)
+scale = Vector2(1.2, 0.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/Platform3"]
+texture = SubResource("GradientTexture2D_l51ey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Platform3"]
+shape = SubResource("RectangleShape2D_eldvc")
+
+[node name="Platform4" type="StaticBody2D" parent="Map/Squares"]
+position = Vector2(1109, 276)
+scale = Vector2(1.2, 0.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/Platform4"]
+texture = SubResource("GradientTexture2D_l51ey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Platform4"]
+shape = SubResource("RectangleShape2D_eldvc")
+
+[node name="Platform5" type="StaticBody2D" parent="Map/Squares"]
+position = Vector2(952, 182)
+scale = Vector2(1.2, 0.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/Platform5"]
+texture = SubResource("GradientTexture2D_l51ey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Platform5"]
+shape = SubResource("RectangleShape2D_eldvc")
+
+[node name="Platform6" type="StaticBody2D" parent="Map/Squares"]
+position = Vector2(802, 112)
+scale = Vector2(1.2, 0.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/Platform6"]
+texture = SubResource("GradientTexture2D_l51ey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Platform6"]
+shape = SubResource("RectangleShape2D_eldvc")
+
+[node name="Platform7" type="StaticBody2D" parent="Map/Squares"]
+position = Vector2(847, -45)
+scale = Vector2(1.2, 0.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/Platform7"]
+texture = SubResource("GradientTexture2D_l51ey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Platform7"]
+shape = SubResource("RectangleShape2D_eldvc")
+
+[node name="Platform8" type="StaticBody2D" parent="Map/Squares"]
+position = Vector2(496, -12)
+scale = Vector2(1.2, 0.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/Platform8"]
+texture = SubResource("GradientTexture2D_l51ey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Platform8"]
+shape = SubResource("RectangleShape2D_eldvc")
+
+[node name="Platform9" type="StaticBody2D" parent="Map/Squares"]
+position = Vector2(313, 35)
+scale = Vector2(1.2, 0.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/Platform9"]
+texture = SubResource("GradientTexture2D_l51ey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Platform9"]
+shape = SubResource("RectangleShape2D_eldvc")
+
+[node name="Ground" type="StaticBody2D" parent="Map/Squares"]
+position = Vector2(336, 841)
+scale = Vector2(39, 8.84)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/Ground"]
+texture = SubResource("GradientTexture2D_l51ey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Ground"]
+shape = SubResource("RectangleShape2D_eldvc")
+
+[node name="Player" parent="." node_paths=PackedStringArray("spawn_point", "live_counter", "score_counter") instance=ExtResource("1_7hi53")]
+position = Vector2(184, 408)
+spawn_point = NodePath("../Map/SpawnPoint")
+live_counter = NodePath("../UI2/Lives")
+score_counter = NodePath("../UI2/Score")
+
+[node name="UI2" type="CanvasLayer" parent="."]
+
+[node name="Score" type="Label" parent="UI2"]
+offset_left = 41.0
+offset_top = 45.0
+offset_right = 93.0
+offset_bottom = 68.0
+text = "Score: "
+
+[node name="Lives" type="Label" parent="UI2"]
+offset_left = 870.0
+offset_top = 41.0
+offset_right = 918.0
+offset_bottom = 64.0
+text = "Lives: "

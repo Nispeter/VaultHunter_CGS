@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://cujsxvsn7qmw3"]
+
+[ext_resource type="Script" path="res://scripts/entities/environment/IBreakable.gd" id="1_8fnpr"]
+
+[sub_resource type="Gradient" id="Gradient_pimlr"]
+colors = PackedColorArray(0.0686275, 0.648681, 0, 1, 1, 0.854902, 0.101961, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g8nn1"]
+gradient = SubResource("Gradient_pimlr")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rqvhb"]
+size = Vector2(62, 60)
+
+[node name="DamagableBox" type="StaticBody2D"]
+position = Vector2(529, 476)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_8fnpr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_g8nn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rqvhb")
+
+[node name="health_controller" type="Node" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_left = -30.0
+offset_top = -18.0
+offset_right = 60.0
+offset_bottom = 5.0
+scale = Vector2(0.661488, 0.661488)
+text = "BREAKABLE"

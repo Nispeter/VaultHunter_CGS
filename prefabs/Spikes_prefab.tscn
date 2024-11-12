@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4gj8p53287vt"]
+
+[ext_resource type="Script" path="res://scripts/entities/environment/Spikes.gd" id="1_qqa0c"]
+
+[sub_resource type="Gradient" id="Gradient_wo411"]
+colors = PackedColorArray(0.992157, 0, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lqtc1"]
+gradient = SubResource("Gradient_wo411")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wahlf"]
+size = Vector2(64, 64)
+
+[node name="Spikes" type="Area2D"]
+script = ExtResource("1_qqa0c")
+damage_amount = 100
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_lqtc1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wahlf")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -31.0
+offset_top = -32.0
+offset_right = 21.0
+offset_bottom = -9.0
+scale = Vector2(0.400748, 0.400748)
+text = "SPIKES"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

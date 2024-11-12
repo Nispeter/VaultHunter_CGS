@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://epq76chxbh1b"]
+
+[ext_resource type="Script" path="res://scripts/entities/environment/HealthPack.gd" id="1_o8cjp"]
+
+[sub_resource type="Gradient" id="Gradient_i1cu0"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j6nfm"]
+gradient = SubResource("Gradient_i1cu0")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h5kqa"]
+size = Vector2(64, 64)
+
+[node name="HealthPack" type="Area2D"]
+scale = Vector2(0.4, 0.409091)
+script = ExtResource("1_o8cjp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_j6nfm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_h5kqa")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -30.0
+offset_top = -14.6667
+offset_right = 32.0
+offset_bottom = 8.33326
+text = "HEALTH"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

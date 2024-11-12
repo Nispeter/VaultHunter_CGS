@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dh2av4d1xjup8"]
+
+[ext_resource type="Script" path="res://scripts/entities/environment/coin.gd" id="1_oukne"]
+
+[sub_resource type="Gradient" id="Gradient_oq86v"]
+colors = PackedColorArray(0.277528, 0.277528, 0.277528, 1, 0.874351, 0.795235, 0.00186093, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_85xfd"]
+gradient = SubResource("Gradient_oq86v")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h5kqa"]
+size = Vector2(64, 64)
+
+[node name="Coin" type="Area2D"]
+scale = Vector2(0.4, 0.409091)
+script = ExtResource("1_oukne")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.52588e-05, -1.7643e-05)
+scale = Vector2(1.01562, 0.993056)
+texture = SubResource("GradientTexture2D_85xfd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_h5kqa")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -34.2222
+offset_right = 21.0
+offset_bottom = -11.2222
+text = "COIN"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
