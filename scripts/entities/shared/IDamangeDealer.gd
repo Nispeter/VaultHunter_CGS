@@ -7,9 +7,9 @@ class_name IDamageDealer
 func deal_damage(target: Object) -> void: 
 	if target.has_node("HealthController"):
 		var health_controller = target.get_node("HealthController")
+		print("dealing damage!")
 		if health_controller.has_method("take_damage"):
 			health_controller.take_damage(damage_amount)
 		
 func _on_body_entered(body: Node) -> void:
-	print("dealing damage!")
 	deal_damage(body)

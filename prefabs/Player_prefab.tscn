@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://jfw74y8eg8hn"]
+[gd_scene load_steps=7 format=3 uid="uid://jfw74y8eg8hn"]
 
 [ext_resource type="Script" path="res://scripts/entities/player/Player.gd" id="1_c8031"]
 [ext_resource type="Texture2D" uid="uid://degn8c3cl1sgh" path="res://icon.svg" id="2_xd3ao"]
 [ext_resource type="Script" path="res://scripts/entities/player/PlayerHealth.gd" id="3_67myh"]
 [ext_resource type="Script" path="res://scripts/entities/player/PlayerMovement.gd" id="4_j04j7"]
+[ext_resource type="Script" path="res://scripts/entities/player/GrapplingController.gd" id="5_q8qsd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5fflx"]
 
@@ -35,5 +36,125 @@ script = ExtResource("3_67myh")
 [node name="MovementController" type="Node" parent="."]
 script = ExtResource("4_j04j7")
 max_jumps = 2
+
+[node name="GrapplingController" type="Node2D" parent="."]
+script = ExtResource("5_q8qsd")
+
+[node name="RayCast" type="Node2D" parent="GrapplingController"]
+rotation = -1.5708
+scale = Vector2(0.625, 0.510204)
+
+[node name="RayCast2D" type="RayCast2D" parent="GrapplingController/RayCast"]
+position = Vector2(0, 25)
+scale = Vector2(1.11817, 0.912794)
+target_position = Vector2(400, 0)
+
+[node name="RayCast2D2" type="RayCast2D" parent="GrapplingController/RayCast"]
+position = Vector2(2, 25)
+rotation = -0.0872665
+scale = Vector2(1.11817, 0.912794)
+target_position = Vector2(400, 0)
+
+[node name="RayCast2D4" type="RayCast2D" parent="GrapplingController/RayCast"]
+position = Vector2(4, 25)
+rotation = -0.174533
+scale = Vector2(1.11817, 0.912794)
+target_position = Vector2(400, 0)
+
+[node name="RayCast2D6" type="RayCast2D" parent="GrapplingController/RayCast"]
+position = Vector2(6, 25)
+rotation = -0.261799
+scale = Vector2(1.11817, 0.912794)
+target_position = Vector2(400, 0)
+
+[node name="RayCast2D7" type="RayCast2D" parent="GrapplingController/RayCast"]
+position = Vector2(8, 25)
+rotation = -0.349066
+scale = Vector2(1.11817, 0.912794)
+target_position = Vector2(400, 0)
+
+[node name="RayCast2D8" type="RayCast2D" parent="GrapplingController/RayCast"]
+position = Vector2(10, 25)
+rotation = -0.436332
+scale = Vector2(1.11817, 0.912794)
+target_position = Vector2(400, 0)
+
+[node name="RayCast2D9" type="RayCast2D" parent="GrapplingController/RayCast"]
+position = Vector2(12, 25)
+rotation = -0.523599
+scale = Vector2(1.11817, 0.912794)
+target_position = Vector2(400, 0)
+
+[node name="RayCast2D10" type="RayCast2D" parent="GrapplingController/RayCast"]
+position = Vector2(14, 25)
+rotation = -0.610865
+scale = Vector2(1.11817, 0.912794)
+target_position = Vector2(400, 0)
+
+[node name="RayCast2D11" type="RayCast2D" parent="GrapplingController/RayCast"]
+position = Vector2(16, 25)
+rotation = -0.698132
+scale = Vector2(1.11817, 0.912794)
+target_position = Vector2(400, 0)
+
+[node name="RayCast2D12" type="RayCast2D" parent="GrapplingController/RayCast"]
+position = Vector2(18, 25)
+rotation = -0.785398
+scale = Vector2(1.11817, 0.912794)
+target_position = Vector2(400, 0)
+
+[node name="RayCast2D3" type="RayCast2D" parent="GrapplingController/RayCast"]
+position = Vector2(-2, 25)
+rotation = 0.0872665
+scale = Vector2(1.11817, 0.912794)
+target_position = Vector2(400, 0)
+
+[node name="RayCast2D5" type="RayCast2D" parent="GrapplingController/RayCast"]
+position = Vector2(-4, 25)
+rotation = 0.174533
+scale = Vector2(1.11817, 0.912794)
+target_position = Vector2(400, 0)
+
+[node name="RayCast2D13" type="RayCast2D" parent="GrapplingController/RayCast"]
+position = Vector2(-6, 25)
+rotation = 0.261799
+scale = Vector2(1.11817, 0.912794)
+target_position = Vector2(400, 0)
+
+[node name="RayCast2D14" type="RayCast2D" parent="GrapplingController/RayCast"]
+position = Vector2(-8, 25)
+rotation = 0.349066
+scale = Vector2(1.11817, 0.912794)
+target_position = Vector2(400, 0)
+
+[node name="RayCast2D15" type="RayCast2D" parent="GrapplingController/RayCast"]
+position = Vector2(-10, 25)
+rotation = 0.436332
+scale = Vector2(1.11817, 0.912794)
+target_position = Vector2(400, 0)
+
+[node name="RayCast2D16" type="RayCast2D" parent="GrapplingController/RayCast"]
+position = Vector2(-12, 25)
+rotation = 0.523599
+scale = Vector2(1.11817, 0.912794)
+target_position = Vector2(400, 0)
+
+[node name="RayCast2D17" type="RayCast2D" parent="GrapplingController/RayCast"]
+position = Vector2(-14, 25)
+rotation = 0.610865
+scale = Vector2(1.11817, 0.912794)
+target_position = Vector2(400, 0)
+
+[node name="RayCast2D18" type="RayCast2D" parent="GrapplingController/RayCast"]
+position = Vector2(-16, 25)
+rotation = 0.698132
+scale = Vector2(1.11817, 0.912794)
+target_position = Vector2(400, 0)
+
+[node name="RayCast2D19" type="RayCast2D" parent="GrapplingController/RayCast"]
+position = Vector2(-18, 25)
+rotation = 0.785398
+scale = Vector2(1.11817, 0.912794)
+target_position = Vector2(400, 0)
 
 [connection signal="loose_lives" from="HealthController" to="." method="_loose_live"]
