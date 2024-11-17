@@ -165,6 +165,17 @@ texture = SubResource("GradientTexture2D_l51ey")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Column3"]
 shape = SubResource("RectangleShape2D_eldvc")
 
+[node name="Column4" type="StaticBody2D" parent="Map/Squares"]
+position = Vector2(-433, 71)
+rotation = 1.5708
+scale = Vector2(4, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/Column4"]
+texture = SubResource("GradientTexture2D_l51ey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Column4"]
+shape = SubResource("RectangleShape2D_eldvc")
+
 [node name="Column2" type="StaticBody2D" parent="Map/Squares"]
 position = Vector2(676, 28)
 rotation = 1.5708
