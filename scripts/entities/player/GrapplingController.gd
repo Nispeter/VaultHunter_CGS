@@ -4,8 +4,8 @@ extends Node2D
 @onready var raycast_angles: Node = $RayCast
 
 var is_hooked: bool = false
-var grapple_speed: float = 500.0
-var swing_damping = 0.95
+var grapple_speed: float = 400.0
+var swing_damping = 0.9
 var grapple_max_distance: int = 200
 var grapple_min_distance: int = 4
 var grapple_current_distance: int
@@ -19,7 +19,7 @@ func _physics_process(delta: float) -> void:
 	queue_redraw()				#TODO: search a better method for drawing a hook, like texture tiling
 	if is_hooked:
 		swing(delta)
-		motion *= swing_damping 
+		motion -= motion.project((hook_pos - global_position).normalized()) * (1 - swing_damping)
 		player_body.velocity = motion
 	else:
 		motion = player_body.velocity
@@ -55,6 +55,7 @@ func get_hook_pos() -> Vector2:
 				return raycast.get_collision_point()
 	return Vector2.ZERO
 
+#TODO: horizontal momentum missing on hook release and swing
 func swing(delta: float) -> void: 
 	var radius: Vector2 = global_position - hook_pos
 	if motion.length() < 0.01 or radius.length() < grapple_min_distance:

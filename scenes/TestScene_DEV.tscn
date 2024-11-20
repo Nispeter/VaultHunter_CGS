@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://6moaj0bk4bpi"]
+[gd_scene load_steps=12 format=3 uid="uid://6moaj0bk4bpi"]
 
 [ext_resource type="PackedScene" uid="uid://jfw74y8eg8hn" path="res://prefabs/Player_prefab.tscn" id="1_7hi53"]
 [ext_resource type="PackedScene" uid="uid://dh2av4d1xjup8" path="res://prefabs/Coin_prefab.tscn" id="1_b21j8"]
 [ext_resource type="PackedScene" uid="uid://cujsxvsn7qmw3" path="res://prefabs/DamagableBox_prefab.tscn" id="2_0lr4j"]
 [ext_resource type="PackedScene" uid="uid://b4gj8p53287vt" path="res://prefabs/Spikes_prefab.tscn" id="4_im7ar"]
 [ext_resource type="PackedScene" uid="uid://epq76chxbh1b" path="res://prefabs/HealthPack_prefab.tscn" id="4_mew0b"]
+[ext_resource type="Script" path="res://scripts/ui/TestScreen_1.gd" id="6_abumt"]
 
 [sub_resource type="Gradient" id="Gradient_32jkx"]
 colors = PackedColorArray(1, 0, 0, 0.235294, 1, 0, 0, 0.235294)
@@ -308,3 +309,31 @@ offset_top = 41.0
 offset_right = 918.0
 offset_bottom = 64.0
 text = "Lives: "
+
+[node name="TestScreen" type="Control" parent="UI2"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -10.0
+offset_top = 238.0
+offset_right = 638.0
+offset_bottom = 497.0
+script = ExtResource("6_abumt")
+
+[node name="Button" type="Button" parent="UI2/TestScreen"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 264.0
+offset_right = 209.0
+offset_bottom = 295.0
+text = "Deactivate Test Screen
+"
+
+[node name="CheckButton" type="CheckButton" parent="UI2/TestScreen"]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 264.0
+offset_right = 416.0
+offset_bottom = 295.0
+text = "Fansy press button "
+
+[connection signal="pressed" from="UI2/TestScreen/Button" to="UI2/TestScreen" method="button_press"]
