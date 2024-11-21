@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://6moaj0bk4bpi"]
+[gd_scene load_steps=21 format=3 uid="uid://6moaj0bk4bpi"]
 
 [ext_resource type="PackedScene" uid="uid://jfw74y8eg8hn" path="res://prefabs/Player_prefab.tscn" id="1_7hi53"]
 [ext_resource type="PackedScene" uid="uid://dh2av4d1xjup8" path="res://prefabs/Coin_prefab.tscn" id="1_b21j8"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/ui/TestScreen_1.gd" id="6_abumt"]
 [ext_resource type="Script" path="res://scripts/ui/InGameUI.gd" id="7_0c1jf"]
 [ext_resource type="Script" path="res://scripts/ui/SpeedRunModule.gd" id="8_4lqte"]
+[ext_resource type="Script" path="res://scripts/test/PauseManager.gd" id="10_q4hic"]
 
 [sub_resource type="Gradient" id="Gradient_32jkx"]
 colors = PackedColorArray(1, 0, 0, 0.235294, 1, 0, 0, 0.235294)
@@ -155,42 +156,8 @@ position = Vector2(58, -141)
 rotation = 0.785398
 
 [node name="Booster1" parent="Map/Interactables" instance=ExtResource("1_lmtrh")]
-position = Vector2(-428, 533)
-
-[node name="Label2" type="Label" parent="Map/Interactables/Booster1"]
-offset_left = -25.0
-offset_top = -24.4444
-offset_right = 48.0
-offset_bottom = -1.44442
-rotation = 0.815469
-text = "speed"
-horizontal_alignment = 1
-
-[node name="Booster2" parent="Map/Interactables" instance=ExtResource("1_lmtrh")]
-position = Vector2(-362, 531)
-type = 1
-
-[node name="Label2" type="Label" parent="Map/Interactables/Booster2"]
-offset_left = -27.5
-offset_top = -24.4444
-offset_right = 45.5
-offset_bottom = -1.44442
-rotation = 0.815469
-text = "hook"
-horizontal_alignment = 1
-
-[node name="Booster3" parent="Map/Interactables" instance=ExtResource("1_lmtrh")]
-position = Vector2(-304, 530)
-type = 2
-
-[node name="Label2" type="Label" parent="Map/Interactables/Booster3"]
-offset_left = -25.0
-offset_top = -26.8889
-offset_right = 48.0
-offset_bottom = -3.88887
-rotation = 0.815469
-text = "jump"
-horizontal_alignment = 1
+position = Vector2(639, 350)
+deactivate_on_collect = null
 
 [node name="SpawnPoint" type="Node2D" parent="Map"]
 position = Vector2(250, 545)
@@ -491,8 +458,7 @@ offset_bottom = 55.0
 scale = Vector2(1, 0.6)
 texture = SubResource("GradientTexture2D_gha4y")
 
-[connection signal="pressed" from="UI2/TestScreen/Button" to="UI2/TestScreen" method="button_press"]
+[node name="Node" type="Node" parent="UI2"]
+script = ExtResource("10_q4hic")
 
-[editable path="Map/Interactables/Booster1"]
-[editable path="Map/Interactables/Booster2"]
-[editable path="Map/Interactables/Booster3"]
+[connection signal="pressed" from="UI2/TestScreen/Button" to="UI2/TestScreen" method="button_press"]

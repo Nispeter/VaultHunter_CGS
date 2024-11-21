@@ -3,6 +3,7 @@ extends Node2D
 @onready var player_body: CharacterBody2D = $".."
 @onready var raycast_angles: Node = $RayCast
 
+@export var is_active: bool = false
 var is_hooked: bool = false
 var grapple_speed: float = 400.0
 var swing_damping = 0.9
@@ -15,6 +16,7 @@ func _ready() -> void:
 	grapple_current_distance = grapple_max_distance
 
 func _physics_process(delta: float) -> void:
+	if is_active == false: return 
 	hook()
 	queue_redraw()				#TODO: search a better method for drawing a hook, like texture tiling
 	if is_hooked:
@@ -26,7 +28,7 @@ func _physics_process(delta: float) -> void:
 
 func _draw() -> void:
 	if is_hooked:
-		print("drawing line")
+		#print("drawing line")
 		draw_line(Vector2(4,0), to_local(hook_pos), Color.WHITE, 3, true)
 	else:
 		if raycast_angles is RayCast2D and raycast_angles.is_colliding():

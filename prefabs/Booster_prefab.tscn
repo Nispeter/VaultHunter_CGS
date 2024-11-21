@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4ufcefpbg3sy"]
+
+[ext_resource type="Script" path="res://scripts/entities/environment/boosters/Booster.gd" id="1_ukssu"]
+
+[sub_resource type="Gradient" id="Gradient_oq86v"]
+colors = PackedColorArray(0.278431, 0.278431, 1, 1, 0.943275, 0, 0.272695, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_85xfd"]
+gradient = SubResource("Gradient_oq86v")
+fill_to = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h5kqa"]
+size = Vector2(64, 64)
+
+[node name="Booster" type="Area2D"]
+position = Vector2(338, 456)
+scale = Vector2(0.4, 0.409091)
+script = ExtResource("1_ukssu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.52588e-05, -1.7643e-05)
+scale = Vector2(1.01562, 0.993056)
+texture = SubResource("GradientTexture2D_85xfd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_h5kqa")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -15.0
+offset_top = -34.2222
+offset_right = 58.0
+offset_bottom = -11.2222
+rotation = 0.815469
+text = "BOOSTER"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
