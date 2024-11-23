@@ -25,7 +25,7 @@ func _push_screen(screen: Screen) -> void:
 		var current_screen = screen_stack.back()
 		current_screen.deactivate()
 	screen_stack.append(screen)
-	add_child(screen) 
+	# add_child(screen) 
 	screen.activate()  
 
 func _pop_screen() -> void:

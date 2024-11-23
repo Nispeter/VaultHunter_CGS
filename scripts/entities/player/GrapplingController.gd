@@ -16,9 +16,9 @@ func _ready() -> void:
 	grapple_current_distance = grapple_max_distance
 
 func _physics_process(delta: float) -> void:
-	if is_active == false: return 
+	if is_active == false: return 		
 	hook()
-	queue_redraw()				#TODO: search a better method for drawing a hook, like texture tiling
+	queue_redraw()						#TODO: search a better method for drawing a hook, like texture tiling
 	if is_hooked:
 		swing(delta)
 		motion -= motion.project((hook_pos - global_position).normalized()) * (1 - swing_damping)

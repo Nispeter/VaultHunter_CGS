@@ -192,6 +192,20 @@ rotation = 0.815469
 text = "jump"
 horizontal_alignment = 1
 
+[node name="Booster4" parent="Map/Interactables" instance=ExtResource("1_lmtrh")]
+position = Vector2(-246, 530)
+type = 3
+duration = 4
+
+[node name="Label2" type="Label" parent="Map/Interactables/Booster4"]
+offset_left = -25.0
+offset_top = -26.8889
+offset_right = 48.0
+offset_bottom = -3.88887
+rotation = 0.815469
+text = "small"
+horizontal_alignment = 1
+
 [node name="SpawnPoint" type="Node2D" parent="Map"]
 position = Vector2(250, 545)
 scale = Vector2(1.05217, 0.44)
@@ -496,3 +510,4 @@ texture = SubResource("GradientTexture2D_gha4y")
 [editable path="Map/Interactables/Booster1"]
 [editable path="Map/Interactables/Booster2"]
 [editable path="Map/Interactables/Booster3"]
+[editable path="Map/Interactables/Booster4"]

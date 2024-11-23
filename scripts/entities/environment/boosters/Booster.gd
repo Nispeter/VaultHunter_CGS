@@ -1,7 +1,7 @@
 class_name Booster
 extends ICollectible
 
-enum BoosterType { SPEED, GRAPPLE, JUMP }
+enum BoosterType { SPEED, GRAPPLE, JUMP, SHRINK }
 @export var type: BoosterType = BoosterType.SPEED
 @export var duration: int = 10
 
