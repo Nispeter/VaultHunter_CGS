@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://6moaj0bk4bpi"]
+[gd_scene load_steps=23 format=3 uid="uid://6moaj0bk4bpi"]
 
 [ext_resource type="PackedScene" uid="uid://jfw74y8eg8hn" path="res://prefabs/Player_prefab.tscn" id="1_7hi53"]
 [ext_resource type="PackedScene" uid="uid://dh2av4d1xjup8" path="res://prefabs/Coin_prefab.tscn" id="1_b21j8"]
@@ -74,6 +74,13 @@ colors = PackedColorArray(0.215686, 0.964706, 0.470588, 1, 0.0784314, 0.364706, 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_gha4y"]
 gradient = SubResource("Gradient_m07c4")
 fill_to = Vector2(0, 1)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ucy6e"]
+
+[sub_resource type="Gradient" id="Gradient_5443s"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s7dek"]
+gradient = SubResource("Gradient_5443s")
 
 [node name="Node2D" type="Node2D"]
 
@@ -193,9 +200,8 @@ text = "jump"
 horizontal_alignment = 1
 
 [node name="Booster4" parent="Map/Interactables" instance=ExtResource("1_lmtrh")]
-position = Vector2(-246, 530)
+position = Vector2(345, 530)
 type = 3
-duration = 4
 
 [node name="Label2" type="Label" parent="Map/Interactables/Booster4"]
 offset_left = -25.0
@@ -504,6 +510,18 @@ offset_right = 62.0
 offset_bottom = 55.0
 scale = Vector2(1, 0.6)
 texture = SubResource("GradientTexture2D_gha4y")
+
+[node name="PostProc" type="Node2D" parent="."]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="PostProc"]
+position = Vector2(330, 469)
+scale = Vector2(4.76, 4.76)
+occluder = SubResource("OccluderPolygon2D_ucy6e")
+
+[node name="PointLight2D" type="PointLight2D" parent="PostProc"]
+position = Vector2(330, 469)
+scale = Vector2(4.76, 4.76)
+texture = SubResource("GradientTexture2D_s7dek")
 
 [connection signal="pressed" from="UI2/TestScreen/Button" to="UI2/TestScreen" method="button_press"]
 

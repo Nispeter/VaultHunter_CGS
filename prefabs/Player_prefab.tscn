@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://jfw74y8eg8hn"]
+[gd_scene load_steps=11 format=3 uid="uid://jfw74y8eg8hn"]
 
 [ext_resource type="Script" path="res://scripts/entities/player/Player.gd" id="1_c8031"]
 [ext_resource type="Texture2D" uid="uid://degn8c3cl1sgh" path="res://icon.svg" id="2_xd3ao"]
@@ -6,8 +6,16 @@
 [ext_resource type="Script" path="res://scripts/entities/player/PlayerMovement.gd" id="4_j04j7"]
 [ext_resource type="Script" path="res://scripts/entities/player/GrapplingController.gd" id="5_q8qsd"]
 [ext_resource type="Script" path="res://scripts/entities/player/BoosterManager.gd" id="6_83w3w"]
+[ext_resource type="Script" path="res://scripts/entities/player/Trail.gd" id="7_kyc3l"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5fflx"]
+
+[sub_resource type="Curve" id="Curve_rmatb"]
+_data = [Vector2(0, 0), 0.0, -0.0393948, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_bp2o1"]
+colors = PackedColorArray(1, 1, 1, 0.784314, 0.105882, 0.341176, 0.992157, 1)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(183, 408)
@@ -123,5 +131,14 @@ script = ExtResource("3_67myh")
 [node name="MovementController" type="Node" parent="."]
 script = ExtResource("4_j04j7")
 max_jumps = 2
+
+[node name="Trail" type="Line2D" parent="."]
+show_behind_parent = true
+z_index = -1
+width = 30.0
+width_curve = SubResource("Curve_rmatb")
+gradient = SubResource("Gradient_bp2o1")
+script = ExtResource("7_kyc3l")
+point_lenght = 49
 
 [connection signal="loose_lives" from="HealthController" to="." method="_loose_live"]

@@ -26,7 +26,7 @@ func activate_booster(booster: int, duration:int) -> void:
 			await delay(duration)
 			player_body.movement_controller.max_jumps -= 1
 		3:
-			#BUG: if hook daectivated while is active results on a bug
+			 	
 			print_debug("Shrink Booster Activated!")
 			var start_scale = player_body.scale
 			var target_scale = 0.5 * player_body.scale
