@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://6moaj0bk4bpi"]
+[gd_scene load_steps=22 format=3 uid="uid://6moaj0bk4bpi"]
 
 [ext_resource type="PackedScene" uid="uid://jfw74y8eg8hn" path="res://prefabs/Player_prefab.tscn" id="1_7hi53"]
 [ext_resource type="PackedScene" uid="uid://dh2av4d1xjup8" path="res://prefabs/Coin_prefab.tscn" id="1_b21j8"]
@@ -10,6 +10,12 @@
 [ext_resource type="Script" path="res://scripts/ui/InGameUI.gd" id="7_0c1jf"]
 [ext_resource type="Script" path="res://scripts/ui/SpeedRunModule.gd" id="8_4lqte"]
 
+[sub_resource type="Gradient" id="Gradient_ef84x"]
+colors = PackedColorArray(0.235294, 0.180392, 0.34902, 1, 0.235294, 0.180392, 0.34902, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_if8k0"]
+gradient = SubResource("Gradient_ef84x")
+
 [sub_resource type="Gradient" id="Gradient_32jkx"]
 colors = PackedColorArray(1, 0, 0, 0.235294, 1, 0, 0, 0.235294)
 
@@ -17,7 +23,7 @@ colors = PackedColorArray(1, 0, 0, 0.235294, 1, 0, 0, 0.235294)
 gradient = SubResource("Gradient_32jkx")
 
 [sub_resource type="Gradient" id="Gradient_k0upc"]
-colors = PackedColorArray(7.21961e-07, 0.360728, 0.534106, 1, 0.847059, 1, 1, 1)
+colors = PackedColorArray(0.509804, 0.180392, 0.65098, 1, 0.509804, 0.180392, 0.65098, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_l51ey"]
 gradient = SubResource("Gradient_k0upc")
@@ -69,18 +75,11 @@ cache/0/30/0/underline_thickness = 0.0
 cache/0/30/0/scale = 1.0
 
 [sub_resource type="Gradient" id="Gradient_m07c4"]
-colors = PackedColorArray(0.215686, 0.964706, 0.470588, 1, 0.0784314, 0.364706, 0.176471, 1)
+colors = PackedColorArray(0.552941, 0.94902, 0.72549, 1, 0.0784314, 0.364706, 0.176471, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_gha4y"]
 gradient = SubResource("Gradient_m07c4")
 fill_to = Vector2(0, 1)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ucy6e"]
-
-[sub_resource type="Gradient" id="Gradient_5443s"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_s7dek"]
-gradient = SubResource("Gradient_5443s")
 
 [node name="Node2D" type="Node2D"]
 
@@ -109,6 +108,13 @@ text = "Movement features:
 
 [node name="Map" type="Node2D" parent="."]
 
+[node name="background" type="Sprite2D" parent="Map"]
+z_index = -10
+position = Vector2(266, -7)
+rotation = 3.14159
+scale = Vector2(56.7168, 56.7168)
+texture = SubResource("GradientTexture2D_if8k0")
+
 [node name="Interactables" type="Node2D" parent="Map"]
 
 [node name="Coin" parent="Map/Interactables" instance=ExtResource("1_b21j8")]
@@ -136,10 +142,12 @@ position = Vector2(-900, 530)
 position = Vector2(1541, 530)
 
 [node name="DamagableBox" parent="Map/Interactables" instance=ExtResource("2_0lr4j")]
-position = Vector2(714, 526)
+visible = false
+position = Vector2(556, 858)
 
 [node name="HealthPack" parent="Map/Interactables" instance=ExtResource("4_mew0b")]
-position = Vector2(2, 349)
+visible = false
+position = Vector2(-156, 681)
 
 [node name="Spikes" parent="Map/Interactables" instance=ExtResource("4_im7ar")]
 position = Vector2(571, 580)
@@ -213,6 +221,7 @@ text = "small"
 horizontal_alignment = 1
 
 [node name="SpawnPoint" type="Node2D" parent="Map"]
+visible = false
 position = Vector2(250, 545)
 scale = Vector2(1.05217, 0.44)
 
@@ -512,16 +521,6 @@ scale = Vector2(1, 0.6)
 texture = SubResource("GradientTexture2D_gha4y")
 
 [node name="PostProc" type="Node2D" parent="."]
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="PostProc"]
-position = Vector2(330, 469)
-scale = Vector2(4.76, 4.76)
-occluder = SubResource("OccluderPolygon2D_ucy6e")
-
-[node name="PointLight2D" type="PointLight2D" parent="PostProc"]
-position = Vector2(330, 469)
-scale = Vector2(4.76, 4.76)
-texture = SubResource("GradientTexture2D_s7dek")
 
 [connection signal="pressed" from="UI2/TestScreen/Button" to="UI2/TestScreen" method="button_press"]
 

@@ -44,11 +44,14 @@ var move_input: float = 0.0
 var is_on_wall: bool = false
 var is_on_ground: bool = false
 
+var sprite_animator : AnimationPlayer
+
 signal on_dash
 
 func _ready() -> void:
 	player_body = get_parent() as CharacterBody2D
-
+	sprite_animator = $"../Icon/AnimationPlayer"
+	
 func _physics_process(delta: float) -> void:
 	if not player_body.is_on_floor() and not is_dashing:
 		player_body.velocity.y += gravity * delta
@@ -73,6 +76,8 @@ func _physics_process(delta: float) -> void:
 	if player_body.is_on_floor() and is_dashing:
 		is_dashing = false
 		dash_time = 0
+	
+	animate_player()
 
 func handle_horizontal_movement(delta: float) -> void:
 	move_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -131,3 +136,9 @@ func handle_dashing(delta: float) -> void:
 
 func is_on_wall_detected() -> bool:
 	return player_body.get_slide_collision_count() > 0 and not player_body.is_on_floor()
+
+func animate_player():
+	if player_body.velocity == Vector2.ZERO and player_body.is_on_floor():
+		sprite_animator.play("idle")  
+	else:
+		sprite_animator.stop()

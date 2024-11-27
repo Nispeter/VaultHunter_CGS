@@ -15,7 +15,14 @@ size = Vector2(64, 64)
 scale = Vector2(0.4, 0.409091)
 script = ExtResource("1_oukne")
 
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(1.52588e-05, -1.7643e-05)
+scale = Vector2(1.01562, 0.993056)
+color = Color(0.85098, 0.45098, 0.823529, 1)
+polygon = PackedVector2Array(-12.3078, -32, -32.0002, -9.84613, -32.0002, 9.84617, -12.3078, 32, 12.3077, 32, 32.0001, 9.84617, 32.0001, -9.84613, 12.3077, -32)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1.52588e-05, -1.7643e-05)
 scale = Vector2(1.01562, 0.993056)
 texture = SubResource("GradientTexture2D_85xfd")
@@ -25,9 +32,10 @@ shape = SubResource("RectangleShape2D_h5kqa")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -20.0
-offset_top = -34.2222
+offset_top = -22.0
 offset_right = 21.0
-offset_bottom = -11.2222
+offset_bottom = 1.0
+theme_override_colors/font_color = Color(0.552941, 0.94902, 0.72549, 1)
 text = "COIN"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

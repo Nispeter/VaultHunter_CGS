@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 func _draw() -> void:
 	if is_hooked:
 		#print("drawing line")
-		draw_line(Vector2(4,0), to_local(hook_pos), Color.WHITE, 3, true)
+		draw_line(Vector2(4, 0), to_local(hook_pos), Color(0.553, 0.949, 0.725), 3, true)
 	else:
 		if raycast_angles is RayCast2D and raycast_angles.is_colliding():
 			var collision_point = raycast_angles.get_collision_point()

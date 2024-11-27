@@ -14,6 +14,7 @@ var current_lives : int
 var current_score : int
 
 func _ready():
+	
 	health_controller = $HealthController
 	movement_controller = $MovementController
 	grappling_controller = $GrapplingController

@@ -3,7 +3,8 @@
 [ext_resource type="Script" path="res://scripts/entities/environment/boosters/Booster.gd" id="1_ukssu"]
 
 [sub_resource type="Gradient" id="Gradient_oq86v"]
-colors = PackedColorArray(0.278431, 0.278431, 1, 1, 0.943275, 0, 0.272695, 1)
+offsets = PackedFloat32Array(0.00649351, 1)
+colors = PackedColorArray(0.85098, 0.45098, 0.823529, 1, 0.85098, 0.45098, 0.823529, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_85xfd"]
 gradient = SubResource("Gradient_oq86v")
@@ -31,6 +32,7 @@ offset_top = -34.2222
 offset_right = 58.0
 offset_bottom = -11.2222
 rotation = 0.815469
+theme_override_colors/font_color = Color(0.552941, 0.94902, 0.72549, 1)
 text = "BOOSTER"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
