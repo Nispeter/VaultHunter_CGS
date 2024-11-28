@@ -45,6 +45,7 @@ var is_on_wall: bool = false
 var is_on_ground: bool = false
 
 var sprite_animator : AnimationPlayer
+@onready var jump_particles = $"../Icon/CPUParticles2D"
 
 signal on_dash
 
@@ -103,9 +104,11 @@ func handle_jumping() -> void:
 		coyote_time = 0.0
 		jump_buffer_time = 0.0
 		jump_count += 1 
+		jump_particles.emitting = true 
 	elif is_jumping and not Input.is_action_pressed("jump"):
 		if player_body.velocity.y < 0:
 			player_body.velocity.y *= variable_jump_height
+		jump_particles.emitting = true 
 		is_jumping = false
 
 	if Input.is_action_just_pressed("jump"):

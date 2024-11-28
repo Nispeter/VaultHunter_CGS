@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn5dt4ep1vuau"]
+
+[sub_resource type="Gradient" id="Gradient_k0upc"]
+colors = PackedColorArray(0.509804, 0.180392, 0.65098, 1, 0.509804, 0.180392, 0.65098, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l51ey"]
+gradient = SubResource("Gradient_k0upc")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eldvc"]
+size = Vector2(63.3333, 60)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tumui"]
+polygon = PackedVector2Array(-25, -30, -31.6666, -30, -31.6666, 30, 31.6667, 30, 31.6667, -30)
+
+[node name="Platform" type="StaticBody2D"]
+scale = Vector2(1.2, 0.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.85778e-05, 3.05176e-05)
+scale = Vector2(0.989584, 0.937501)
+texture = SubResource("GradientTexture2D_l51ey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_eldvc")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_tumui")

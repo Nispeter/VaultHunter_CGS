@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://6moaj0bk4bpi"]
+[gd_scene load_steps=25 format=3 uid="uid://6moaj0bk4bpi"]
 
 [ext_resource type="PackedScene" uid="uid://jfw74y8eg8hn" path="res://prefabs/Player_prefab.tscn" id="1_7hi53"]
 [ext_resource type="PackedScene" uid="uid://dh2av4d1xjup8" path="res://prefabs/Coin_prefab.tscn" id="1_b21j8"]
@@ -6,9 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://cujsxvsn7qmw3" path="res://prefabs/DamagableBox_prefab.tscn" id="2_0lr4j"]
 [ext_resource type="PackedScene" uid="uid://b4gj8p53287vt" path="res://prefabs/Spikes_prefab.tscn" id="4_im7ar"]
 [ext_resource type="PackedScene" uid="uid://epq76chxbh1b" path="res://prefabs/HealthPack_prefab.tscn" id="4_mew0b"]
+[ext_resource type="PackedScene" uid="uid://bn5dt4ep1vuau" path="res://prefabs/platform_prefab.tscn" id="6_7ymcg"]
 [ext_resource type="Script" path="res://scripts/ui/TestScreen_1.gd" id="6_abumt"]
 [ext_resource type="Script" path="res://scripts/ui/InGameUI.gd" id="7_0c1jf"]
 [ext_resource type="Script" path="res://scripts/ui/SpeedRunModule.gd" id="8_4lqte"]
+[ext_resource type="Shader" path="res://shaders/cam_shader.gdshader" id="8_nfn6u"]
 
 [sub_resource type="Gradient" id="Gradient_ef84x"]
 colors = PackedColorArray(0.235294, 0.180392, 0.34902, 1, 0.235294, 0.180392, 0.34902, 1)
@@ -22,14 +24,48 @@ colors = PackedColorArray(1, 0, 0, 0.235294, 1, 0, 0, 0.235294)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2k14p"]
 gradient = SubResource("Gradient_32jkx")
 
-[sub_resource type="Gradient" id="Gradient_k0upc"]
-colors = PackedColorArray(0.509804, 0.180392, 0.65098, 1, 0.509804, 0.180392, 0.65098, 1)
+[sub_resource type="Gradient" id="Gradient_20ggf"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_l51ey"]
-gradient = SubResource("Gradient_k0upc")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_31ob0"]
+gradient = SubResource("Gradient_20ggf")
+fill_from = Vector2(0.811927, 0.770642)
+fill_to = Vector2(0, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eldvc"]
-size = Vector2(64, 64)
+[sub_resource type="Environment" id="Environment_qu8qq"]
+background_mode = 3
+tonemap_mode = 3
+tonemap_exposure = 0.8
+tonemap_white = 1.9
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.2
+glow_bloom = 0.5
+fog_enabled = true
+adjustment_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fy7dw"]
+shader = ExtResource("8_nfn6u")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.0
+shader_parameter/grille_opacity = 0.0
+shader_parameter/resolution = Vector2(1280, 720)
+shader_parameter/pixelate = false
+shader_parameter/roll = false
+shader_parameter/roll_speed = 0.0
+shader_parameter/roll_size = 0.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.08
+shader_parameter/aberration = 0.00100005
+shader_parameter/brightness = 1.1
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.112
 
 [sub_resource type="Gradient" id="Gradient_sf4i1"]
 colors = PackedColorArray(0.129412, 0.129412, 0.129412, 1, 0.129412, 0.129412, 0.129412, 1)
@@ -237,182 +273,111 @@ text = "SPAWN"
 
 [node name="Squares" type="Node2D" parent="Map"]
 
-[node name="FloorSquare" type="StaticBody2D" parent="Map/Squares"]
-position = Vector2(400, 528)
+[node name="Platform" parent="Map/Squares" instance=ExtResource("6_7ymcg")]
+position = Vector2(856, 338)
 
-[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/FloorSquare"]
-texture = SubResource("GradientTexture2D_l51ey")
+[node name="Platform15" parent="Map/Squares" instance=ExtResource("6_7ymcg")]
+position = Vector2(1082, -40)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/FloorSquare"]
-shape = SubResource("RectangleShape2D_eldvc")
-
-[node name="FloorSquare2" type="StaticBody2D" parent="Map/Squares"]
-position = Vector2(464, 528)
-
-[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/FloorSquare2"]
-texture = SubResource("GradientTexture2D_l51ey")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/FloorSquare2"]
-shape = SubResource("RectangleShape2D_eldvc")
-
-[node name="FloorSquare3" type="StaticBody2D" parent="Map/Squares"]
-position = Vector2(464, 464)
-
-[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/FloorSquare3"]
-texture = SubResource("GradientTexture2D_l51ey")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/FloorSquare3"]
-shape = SubResource("RectangleShape2D_eldvc")
-
-[node name="Column" type="StaticBody2D" parent="Map/Squares"]
-position = Vector2(66, 501)
-rotation = 0.785398
-scale = Vector2(4, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/Column"]
-texture = SubResource("GradientTexture2D_l51ey")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Column"]
-shape = SubResource("RectangleShape2D_eldvc")
-
-[node name="Column3" type="StaticBody2D" parent="Map/Squares"]
-position = Vector2(118, -67)
-rotation = 0.785398
-scale = Vector2(4, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/Column3"]
-texture = SubResource("GradientTexture2D_l51ey")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Column3"]
-shape = SubResource("RectangleShape2D_eldvc")
-
-[node name="Column4" type="StaticBody2D" parent="Map/Squares"]
-position = Vector2(-433, 71)
+[node name="Platform14" parent="Map/Squares" instance=ExtResource("6_7ymcg")]
+position = Vector2(784, 97)
 rotation = 1.5708
-scale = Vector2(4, 1)
+scale = Vector2(3.43732, 1.71866)
 
-[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/Column4"]
-texture = SubResource("GradientTexture2D_l51ey")
+[node name="Platform11" parent="Map/Squares" instance=ExtResource("6_7ymcg")]
+position = Vector2(945, 223)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Column4"]
-shape = SubResource("RectangleShape2D_eldvc")
+[node name="Platform12" parent="Map/Squares" instance=ExtResource("6_7ymcg")]
+position = Vector2(605, 25)
 
-[node name="Column2" type="StaticBody2D" parent="Map/Squares"]
-position = Vector2(676, 28)
-rotation = 1.5708
+[node name="Platform13" parent="Map/Squares" instance=ExtResource("6_7ymcg")]
+position = Vector2(367, -75)
+
+[node name="Platform9" parent="Map/Squares" instance=ExtResource("6_7ymcg")]
+position = Vector2(653, 401)
+
+[node name="Platform6" parent="Map/Squares" instance=ExtResource("6_7ymcg")]
+position = Vector2(90, 527)
+rotation = 0.785398
 scale = Vector2(3, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/Column2"]
-texture = SubResource("GradientTexture2D_l51ey")
+[node name="Platform16" parent="Map/Squares" instance=ExtResource("6_7ymcg")]
+position = Vector2(80, -108)
+rotation = 0.785398
+scale = Vector2(3, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Column2"]
-shape = SubResource("RectangleShape2D_eldvc")
+[node name="Platform7" parent="Map/Squares" instance=ExtResource("6_7ymcg")]
+position = Vector2(465, 527)
+scale = Vector2(1, 1)
 
-[node name="Platform" type="StaticBody2D" parent="Map/Squares"]
-position = Vector2(617, 382)
-scale = Vector2(1.2, 0.3)
+[node name="Platform10" parent="Map/Squares" instance=ExtResource("6_7ymcg")]
+position = Vector2(404, 527)
+scale = Vector2(1, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/Platform"]
-texture = SubResource("GradientTexture2D_l51ey")
+[node name="Platform8" parent="Map/Squares" instance=ExtResource("6_7ymcg")]
+position = Vector2(465, 467)
+scale = Vector2(1, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Platform"]
-shape = SubResource("RectangleShape2D_eldvc")
+[node name="Platform2" parent="Map/Squares" instance=ExtResource("6_7ymcg")]
+position = Vector2(-519, 552)
+scale = Vector2(-1.84609, 5.72931)
 
-[node name="Platform2" type="StaticBody2D" parent="Map/Squares"]
-position = Vector2(802, 382)
-scale = Vector2(1.2, 0.3)
+[node name="Platform3" parent="Map/Squares" instance=ExtResource("6_7ymcg")]
+position = Vector2(-547, 386)
+rotation = 0.785398
+scale = Vector2(-1.84609, 2.12931)
 
-[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/Platform2"]
-texture = SubResource("GradientTexture2D_l51ey")
+[node name="Platform4" parent="Map/Squares" instance=ExtResource("6_7ymcg")]
+position = Vector2(-462, 144)
+rotation = 0.785398
+scale = Vector2(-1.84609, 2.12931)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Platform2"]
-shape = SubResource("RectangleShape2D_eldvc")
+[node name="Platform5" parent="Map/Squares" instance=ExtResource("6_7ymcg")]
+position = Vector2(-324, 150)
+rotation = 0.0462851
+scale = Vector2(-4.40716, 2.88553)
 
-[node name="Platform3" type="StaticBody2D" parent="Map/Squares"]
-position = Vector2(978, 360)
-scale = Vector2(1.2, 0.3)
+[node name="Ground" parent="Map/Squares" instance=ExtResource("6_7ymcg")]
+position = Vector2(261, 835)
+scale = Vector2(44.0254, 9.25483)
 
-[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/Platform3"]
-texture = SubResource("GradientTexture2D_l51ey")
+[node name="Ceiling" parent="Map/Squares" instance=ExtResource("6_7ymcg")]
+position = Vector2(216, -662)
+scale = Vector2(44.0254, 9.25483)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Platform3"]
-shape = SubResource("RectangleShape2D_eldvc")
+[node name="Ceiling2" parent="Map/Squares" instance=ExtResource("6_7ymcg")]
+position = Vector2(1897, 1106)
+rotation = 1.5708
+scale = Vector2(44.0254, 9.25483)
 
-[node name="Platform4" type="StaticBody2D" parent="Map/Squares"]
-position = Vector2(1109, 276)
-scale = Vector2(1.2, 0.3)
+[node name="Lights" type="Node2D" parent="Map"]
 
-[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/Platform4"]
-texture = SubResource("GradientTexture2D_l51ey")
+[node name="PointLight2D2" type="PointLight2D" parent="Map/Lights"]
+position = Vector2(812, -268)
+rotation = 2.234
+scale = Vector2(150.919, -121.132)
+color = Color(1, 0.881829, 0.313221, 1)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_31ob0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Platform4"]
-shape = SubResource("RectangleShape2D_eldvc")
-
-[node name="Platform5" type="StaticBody2D" parent="Map/Squares"]
-position = Vector2(952, 182)
-scale = Vector2(1.2, 0.3)
-
-[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/Platform5"]
-texture = SubResource("GradientTexture2D_l51ey")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Platform5"]
-shape = SubResource("RectangleShape2D_eldvc")
-
-[node name="Platform6" type="StaticBody2D" parent="Map/Squares"]
-position = Vector2(802, 112)
-scale = Vector2(1.2, 0.3)
-
-[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/Platform6"]
-texture = SubResource("GradientTexture2D_l51ey")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Platform6"]
-shape = SubResource("RectangleShape2D_eldvc")
-
-[node name="Platform7" type="StaticBody2D" parent="Map/Squares"]
-position = Vector2(847, -45)
-scale = Vector2(1.2, 0.3)
-
-[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/Platform7"]
-texture = SubResource("GradientTexture2D_l51ey")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Platform7"]
-shape = SubResource("RectangleShape2D_eldvc")
-
-[node name="Platform8" type="StaticBody2D" parent="Map/Squares"]
-position = Vector2(496, -12)
-scale = Vector2(1.2, 0.3)
-
-[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/Platform8"]
-texture = SubResource("GradientTexture2D_l51ey")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Platform8"]
-shape = SubResource("RectangleShape2D_eldvc")
-
-[node name="Platform9" type="StaticBody2D" parent="Map/Squares"]
-position = Vector2(313, 35)
-scale = Vector2(1.2, 0.3)
-
-[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/Platform9"]
-texture = SubResource("GradientTexture2D_l51ey")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Platform9"]
-shape = SubResource("RectangleShape2D_eldvc")
-
-[node name="Ground" type="StaticBody2D" parent="Map/Squares"]
-position = Vector2(336, 841)
-scale = Vector2(39, 8.84)
-
-[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/Ground"]
-texture = SubResource("GradientTexture2D_l51ey")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/Ground"]
-shape = SubResource("RectangleShape2D_eldvc")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Map/Lights"]
+environment = SubResource("Environment_qu8qq")
 
 [node name="Player" parent="." node_paths=PackedStringArray("spawn_point", "live_counter", "score_counter") instance=ExtResource("1_7hi53")]
 position = Vector2(184, 408)
 spawn_point = NodePath("../Map/SpawnPoint")
 live_counter = NodePath("../UI2/Lives")
 score_counter = NodePath("../UI2/Score")
+
+[node name="Effects" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Effects"]
+z_index = -1
+material = SubResource("ShaderMaterial_fy7dw")
+offset_left = -6.0
+offset_top = -4.0
+offset_right = 962.0
+offset_bottom = 545.0
 
 [node name="UI2" type="CanvasLayer" parent="."]
 
