@@ -330,6 +330,11 @@ position = Vector2(90, 527)
 rotation = 0.785398
 scale = Vector2(3, 1)
 
+[node name="Platform17" parent="Map/Squares" instance=ExtResource("6_7ymcg")]
+position = Vector2(-689, 63)
+rotation = -0.785398
+scale = Vector2(10, 1)
+
 [node name="Platform16" parent="Map/Squares" instance=ExtResource("6_7ymcg")]
 position = Vector2(80, -108)
 rotation = 0.785398
