@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://6moaj0bk4bpi"]
+[gd_scene load_steps=16 format=3 uid="uid://6moaj0bk4bpi"]
 
 [ext_resource type="PackedScene" uid="uid://jfw74y8eg8hn" path="res://prefabs/Player_prefab.tscn" id="1_7hi53"]
 [ext_resource type="PackedScene" uid="uid://dh2av4d1xjup8" path="res://prefabs/Coin_prefab.tscn" id="1_b21j8"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://b4gj8p53287vt" path="res://prefabs/Spikes_prefab.tscn" id="4_im7ar"]
 [ext_resource type="PackedScene" uid="uid://epq76chxbh1b" path="res://prefabs/HealthPack_prefab.tscn" id="4_mew0b"]
 [ext_resource type="Script" path="res://scripts/ui/TestScreen_1.gd" id="6_abumt"]
+[ext_resource type="Script" path="res://scripts/ui/ui_input_handler.gd" id="6_cjcyx"]
+[ext_resource type="Shader" path="res://assets/shaders/pause_blur.gdshader" id="8_6tmrj"]
 
 [sub_resource type="Gradient" id="Gradient_32jkx"]
 colors = PackedColorArray(1, 0, 0, 0.235294, 1, 0, 0, 0.235294)
@@ -21,6 +23,13 @@ gradient = SubResource("Gradient_k0upc")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eldvc"]
 size = Vector2(64, 64)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_esw44"]
+shader = ExtResource("8_6tmrj")
+shader_parameter/amount = 1.0
+
+[sub_resource type="SystemFont" id="SystemFont_hc1ms"]
+font_names = PackedStringArray("Consolas")
 
 [node name="Node2D" type="Node2D"]
 
@@ -48,6 +57,7 @@ text = "Movement features:
 "
 
 [node name="Map" type="Node2D" parent="."]
+process_mode = 1
 
 [node name="Interactables" type="Node2D" parent="Map"]
 
@@ -295,6 +305,7 @@ live_counter = NodePath("../UI2/Lives")
 score_counter = NodePath("../UI2/Score")
 
 [node name="UI2" type="CanvasLayer" parent="."]
+script = ExtResource("6_cjcyx")
 
 [node name="Score" type="Label" parent="UI2"]
 offset_left = 41.0
@@ -310,30 +321,75 @@ offset_right = 918.0
 offset_bottom = 64.0
 text = "Lives: "
 
-[node name="TestScreen" type="Control" parent="UI2"]
+[node name="PauseMenu" type="Control" parent="UI2"]
+visible = false
 layout_mode = 3
-anchors_preset = 0
-offset_left = -10.0
-offset_top = 238.0
-offset_right = 638.0
-offset_bottom = 497.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("6_abumt")
 
-[node name="Button" type="Button" parent="UI2/TestScreen"]
+[node name="ColorRect" type="ColorRect" parent="UI2/PauseMenu"]
+material = SubResource("ShaderMaterial_esw44")
 layout_mode = 0
-offset_left = 25.0
-offset_top = 264.0
-offset_right = 209.0
-offset_bottom = 295.0
-text = "Deactivate Test Screen
-"
+offset_left = -519.0
+offset_top = -303.0
+offset_right = 1027.0
+offset_bottom = 549.0
 
-[node name="CheckButton" type="CheckButton" parent="UI2/TestScreen"]
-layout_mode = 0
-offset_left = 216.0
-offset_top = 264.0
-offset_right = 416.0
-offset_bottom = 295.0
-text = "Fansy press button "
+[node name="MarginContainer" type="MarginContainer" parent="UI2/PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
 
-[connection signal="pressed" from="UI2/TestScreen/Button" to="UI2/TestScreen" method="button_press"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI2/PauseMenu/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Control" type="Control" parent="UI2/PauseMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI2/PauseMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_hc1ms")
+theme_override_font_sizes/font_size = 64
+text = "PAUSE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI2/PauseMenu/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI2/PauseMenu/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Resume" type="Button" parent="UI2/PauseMenu/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Resume Game"
+
+[node name="Main Menu" type="Button" parent="UI2/PauseMenu/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="Exit Game" type="Button" parent="UI2/PauseMenu/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit Game"
+
+[connection signal="pressed" from="UI2/PauseMenu/MarginContainer/HBoxContainer/VBoxContainer/Resume" to="UI2/PauseMenu" method="_on_resume_pressed"]
+[connection signal="pressed" from="UI2/PauseMenu/MarginContainer/HBoxContainer/VBoxContainer/Main Menu" to="UI2/PauseMenu" method="_on_main_menu_pressed"]
+[connection signal="pressed" from="UI2/PauseMenu/MarginContainer/HBoxContainer/VBoxContainer/Exit Game" to="UI2/PauseMenu" method="_on_exit_game_pressed"]
