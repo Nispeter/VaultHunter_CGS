@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://hu5sda23sd8d"]
+
+[ext_resource type="Script" path="res://scripts/entities/environment/FireBall.gd" id="1_ypgnb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxjpi"]
+size = Vector2(42.4264, 42.4264)
+
+[node name="FireBall" type="Area2D"]
+script = ExtResource("1_ypgnb")
+damage_amount = 100
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.54902, 0.94902, 0.721569, 1)
+polygon = PackedVector2Array(-14, -32, -14, 32, -11, 35, -6, 37, 0, 38, 6, 37, 11, 35, 14, 32, 14, -32, 11, -36, 6, -38, 0, -39, -6, -38, -11, -36)
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+rotation = 1.5708
+color = Color(0.54902, 0.94902, 0.721569, 1)
+polygon = PackedVector2Array(-14, -32, -14, 32, -11, 35, -6, 37, 0, 38, 6, 37, 11, 35, 14, 32, 14, -32, 11, -36, 6, -38, 0, -39, -6, -38, -11, -36)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 0.785398
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_qxjpi")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -14.0
+offset_top = -3.0
+offset_right = 58.0
+offset_bottom = 20.0
+rotation = -1.5708
+scale = Vector2(0.400748, 0.400748)
+theme_override_colors/font_color = Color(0.235294, 0.180392, 0.34902, 1)
+text = "FIREBALL"
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(-1, 0)
+width = 0.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

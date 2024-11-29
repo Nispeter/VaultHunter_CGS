@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://6moaj0bk4bpi"]
+[gd_scene load_steps=26 format=3 uid="uid://6moaj0bk4bpi"]
 
 [ext_resource type="PackedScene" uid="uid://jfw74y8eg8hn" path="res://prefabs/Player_prefab.tscn" id="1_7hi53"]
 [ext_resource type="PackedScene" uid="uid://dh2av4d1xjup8" path="res://prefabs/Coin_prefab.tscn" id="1_b21j8"]
+[ext_resource type="PackedScene" uid="uid://hu5sda23sd8d" path="res://prefabs/FireBall_prefab.tscn" id="1_g31d2"]
 [ext_resource type="PackedScene" uid="uid://c4ufcefpbg3sy" path="res://prefabs/Booster_prefab.tscn" id="1_lmtrh"]
 [ext_resource type="PackedScene" uid="uid://cujsxvsn7qmw3" path="res://prefabs/DamagableBox_prefab.tscn" id="2_0lr4j"]
 [ext_resource type="PackedScene" uid="uid://b4gj8p53287vt" path="res://prefabs/Spikes_prefab.tscn" id="4_im7ar"]
@@ -153,6 +154,54 @@ texture = SubResource("GradientTexture2D_if8k0")
 
 [node name="Interactables" type="Node2D" parent="Map"]
 
+[node name="DamageDealers" type="Node2D" parent="Map/Interactables"]
+
+[node name="FireBall2" parent="Map/Interactables/DamageDealers" instance=ExtResource("1_g31d2")]
+position = Vector2(750, 495)
+scale = Vector2(0.2, 0.2)
+speed = 300.0
+
+[node name="Line2D" parent="Map/Interactables/DamageDealers/FireBall2" index="4"]
+top_level = true
+position = Vector2(719, 637)
+points = PackedVector2Array(31, -119, 30, -411)
+
+[node name="FireBall3" parent="Map/Interactables/DamageDealers" instance=ExtResource("1_g31d2")]
+position = Vector2(794, 230)
+scale = Vector2(0.2, 0.2)
+speed = 300.0
+
+[node name="Line2D" parent="Map/Interactables/DamageDealers/FireBall3" index="4"]
+top_level = true
+position = Vector2(826, 105)
+rotation = 3.14159
+points = PackedVector2Array(31, -119, 30, -411)
+
+[node name="FireBall" parent="Map/Interactables/DamageDealers" instance=ExtResource("1_g31d2")]
+
+[node name="Line2D" parent="Map/Interactables/DamageDealers/FireBall" index="4"]
+points = PackedVector2Array(0, -3, -122, -52, -234, -168, -256, -317)
+
+[node name="Spikes" parent="Map/Interactables/DamageDealers" instance=ExtResource("4_im7ar")]
+position = Vector2(571, 580)
+
+[node name="Spikes2" parent="Map/Interactables/DamageDealers" instance=ExtResource("4_im7ar")]
+position = Vector2(802, 580)
+
+[node name="Spikes3" parent="Map/Interactables/DamageDealers" instance=ExtResource("4_im7ar")]
+position = Vector2(892, 580)
+
+[node name="Spikes6" parent="Map/Interactables/DamageDealers" instance=ExtResource("4_im7ar")]
+position = Vector2(1177, 580)
+scale = Vector2(5.32, 1)
+
+[node name="Spikes5" parent="Map/Interactables/DamageDealers" instance=ExtResource("4_im7ar")]
+position = Vector2(-75, 580)
+
+[node name="Spikes4" parent="Map/Interactables/DamageDealers" instance=ExtResource("4_im7ar")]
+position = Vector2(58, -141)
+rotation = 0.785398
+
 [node name="Coin" parent="Map/Interactables" instance=ExtResource("1_b21j8")]
 position = Vector2(338, 456)
 
@@ -184,26 +233,6 @@ position = Vector2(556, 858)
 [node name="HealthPack" parent="Map/Interactables" instance=ExtResource("4_mew0b")]
 visible = false
 position = Vector2(-156, 681)
-
-[node name="Spikes" parent="Map/Interactables" instance=ExtResource("4_im7ar")]
-position = Vector2(571, 580)
-
-[node name="Spikes2" parent="Map/Interactables" instance=ExtResource("4_im7ar")]
-position = Vector2(802, 580)
-
-[node name="Spikes3" parent="Map/Interactables" instance=ExtResource("4_im7ar")]
-position = Vector2(892, 580)
-
-[node name="Spikes6" parent="Map/Interactables" instance=ExtResource("4_im7ar")]
-position = Vector2(1177, 580)
-scale = Vector2(5.32, 1)
-
-[node name="Spikes5" parent="Map/Interactables" instance=ExtResource("4_im7ar")]
-position = Vector2(-75, 580)
-
-[node name="Spikes4" parent="Map/Interactables" instance=ExtResource("4_im7ar")]
-position = Vector2(58, -141)
-rotation = 0.785398
 
 [node name="Booster1" parent="Map/Interactables" instance=ExtResource("1_lmtrh")]
 position = Vector2(-428, 533)
@@ -372,6 +401,7 @@ score_counter = NodePath("../UI2/Score")
 [node name="Effects" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Effects"]
+visible = false
 z_index = -1
 material = SubResource("ShaderMaterial_fy7dw")
 offset_left = -6.0
@@ -489,6 +519,9 @@ texture = SubResource("GradientTexture2D_gha4y")
 
 [connection signal="pressed" from="UI2/TestScreen/Button" to="UI2/TestScreen" method="button_press"]
 
+[editable path="Map/Interactables/DamageDealers/FireBall2"]
+[editable path="Map/Interactables/DamageDealers/FireBall3"]
+[editable path="Map/Interactables/DamageDealers/FireBall"]
 [editable path="Map/Interactables/Booster1"]
 [editable path="Map/Interactables/Booster2"]
 [editable path="Map/Interactables/Booster3"]
