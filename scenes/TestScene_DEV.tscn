@@ -401,7 +401,6 @@ score_counter = NodePath("../UI2/Score")
 [node name="Effects" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Effects"]
-visible = false
 z_index = -1
 material = SubResource("ShaderMaterial_fy7dw")
 offset_left = -6.0
