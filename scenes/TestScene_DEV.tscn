@@ -2,13 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://jfw74y8eg8hn" path="res://prefabs/Player_prefab.tscn" id="1_7hi53"]
 [ext_resource type="PackedScene" uid="uid://dh2av4d1xjup8" path="res://prefabs/Coin_prefab.tscn" id="1_b21j8"]
-[ext_resource type="PackedScene" path="res://prefabs/FireBall_prefab.tscn" id="1_g31d2"]
+[ext_resource type="PackedScene" uid="uid://hu5sda23sd8d" path="res://prefabs/FireBall_prefab.tscn" id="1_g31d2"]
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_kybki"]
-[ext_resource type="PackedScene" path="res://prefabs/Booster_prefab.tscn" id="1_lmtrh"]
+[ext_resource type="PackedScene" uid="uid://c4ufcefpbg3sy" path="res://prefabs/Booster_prefab.tscn" id="1_lmtrh"]
 [ext_resource type="PackedScene" uid="uid://cujsxvsn7qmw3" path="res://prefabs/DamagableBox_prefab.tscn" id="2_0lr4j"]
 [ext_resource type="PackedScene" uid="uid://b4gj8p53287vt" path="res://prefabs/Spikes_prefab.tscn" id="4_im7ar"]
 [ext_resource type="PackedScene" uid="uid://epq76chxbh1b" path="res://prefabs/HealthPack_prefab.tscn" id="4_mew0b"]
-[ext_resource type="PackedScene" path="res://prefabs/platform_prefab.tscn" id="6_7ymcg"]
+[ext_resource type="PackedScene" uid="uid://bn5dt4ep1vuau" path="res://prefabs/platform_prefab.tscn" id="6_7ymcg"]
 [ext_resource type="Script" path="res://scripts/ui/InGameUI.gd" id="7_0c1jf"]
 [ext_resource type="Script" path="res://scripts/ui/SpeedRunModule.gd" id="8_4lqte"]
 [ext_resource type="Shader" path="res://assets/shaders/cam_shader.gdshader" id="8_nfn6u"]
@@ -327,7 +327,6 @@ text = "FINISH"
 [node name="Area2D" type="Area2D" parent="Map/FinishPoint"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/FinishPoint/Area2D"]
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_xnbg1")
 
 [node name="Squares" type="Node2D" parent="Map"]
