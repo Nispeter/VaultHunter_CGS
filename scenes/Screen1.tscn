@@ -1,0 +1,774 @@
+[gd_scene load_steps=46 format=3 uid="uid://hyh333rtdbp7"]
+
+[ext_resource type="PackedScene" uid="uid://d3s6ypmpl50d5" path="res://prefabs/wall_prefab.tscn" id="1_n27t5"]
+[ext_resource type="PackedScene" uid="uid://jfw74y8eg8hn" path="res://prefabs/Player_prefab.tscn" id="2_hbf8m"]
+[ext_resource type="Script" path="res://scripts/ui/TestScreen_1.gd" id="3_0d51e"]
+[ext_resource type="Script" path="res://scripts/ui/InGameUI.gd" id="4_5dq5t"]
+[ext_resource type="Script" path="res://scripts/ui/SpeedRunModule.gd" id="5_j24li"]
+
+[sub_resource type="Gradient" id="Gradient_go1f5"]
+colors = PackedColorArray(0.235294, 0.180392, 0.34902, 1, 0.235294, 0.180392, 0.34902, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ql7qt"]
+gradient = SubResource("Gradient_go1f5")
+
+[sub_resource type="Gradient" id="Gradient_k2xet"]
+offsets = PackedFloat32Array(0.24026, 0.597403, 1)
+colors = PackedColorArray(0.675269, 0.477732, 0.97304, 1, 0.584582, 0.314767, 0.796526, 1, 0.509804, 0.180392, 0.65098, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_47cpl"]
+gradient = SubResource("Gradient_k2xet")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g27x1"]
+size = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_r5ibi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4mfdw"]
+resource_name = "downUp"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(384, 192), Vector2(384, 64), Vector2(384, 192)]
+}
+
+[sub_resource type="Animation" id="Animation_tepxe"]
+resource_name = "updown"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(640, 64), Vector2(640, 256), Vector2(640, 64)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_08ewj"]
+_data = {
+"RESET": SubResource("Animation_r5ibi"),
+"downUp": SubResource("Animation_4mfdw"),
+"updown": SubResource("Animation_tepxe")
+}
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_trvwm"]
+polygon = PackedVector2Array(0, 0, 0, 32, 32, 32, 32, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sih23"]
+size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_t3cis"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(208, 128)]
+}
+
+[sub_resource type="Animation" id="Animation_0sdox"]
+resource_name = "downUp"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(208, 128), Vector2(208, 256), Vector2(208, 128)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_41c7q"]
+_data = {
+"RESET": SubResource("Animation_t3cis"),
+"downUp": SubResource("Animation_0sdox")
+}
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hyow1"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="Animation" id="Animation_uubx8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(848, 448)]
+}
+
+[sub_resource type="Animation" id="Animation_j31pi"]
+resource_name = "upDown"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(848, 448), Vector2(848, 576), Vector2(848, 448)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6fwol"]
+_data = {
+"RESET": SubResource("Animation_uubx8"),
+"upDown": SubResource("Animation_j31pi")
+}
+
+[sub_resource type="Animation" id="Animation_l4den"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(80, 480)]
+}
+
+[sub_resource type="Animation" id="Animation_8vond"]
+resource_name = "upDown"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(80, 480), Vector2(80, 640), Vector2(80, 480)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2krxf"]
+_data = {
+"RESET": SubResource("Animation_l4den"),
+"upDown": SubResource("Animation_8vond")
+}
+
+[sub_resource type="Animation" id="Animation_a8lj5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(656, 608)]
+}
+
+[sub_resource type="Animation" id="Animation_2e6i2"]
+resource_name = "upDown"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(656, 608), Vector2(656, 480), Vector2(656, 608)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v2rwx"]
+_data = {
+"RESET": SubResource("Animation_a8lj5"),
+"upDown": SubResource("Animation_2e6i2")
+}
+
+[sub_resource type="Animation" id="Animation_k8i1i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1104, 112)]
+}
+
+[sub_resource type="Animation" id="Animation_mrwc3"]
+resource_name = "upDown"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1104, 112), Vector2(1104, 272), Vector2(1104, 112)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eu4do"]
+_data = {
+"RESET": SubResource("Animation_k8i1i"),
+"upDown": SubResource("Animation_mrwc3")
+}
+
+[sub_resource type="Animation" id="Animation_txji7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1104, 400)]
+}
+
+[sub_resource type="Animation" id="Animation_1jis6"]
+resource_name = "upDown"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1104, 400), Vector2(1104, 464), Vector2(1104, 400)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tnv4x"]
+_data = {
+"RESET": SubResource("Animation_txji7"),
+"upDown": SubResource("Animation_1jis6")
+}
+
+[sub_resource type="Animation" id="Animation_pm85j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(96, 272)]
+}
+
+[sub_resource type="Animation" id="Animation_qth38"]
+resource_name = "side to side"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(96, 272), Vector2(576, 272), Vector2(96, 272)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6eemc"]
+_data = {
+"RESET": SubResource("Animation_pm85j"),
+"side to side": SubResource("Animation_qth38")
+}
+
+[sub_resource type="Gradient" id="Gradient_uptpd"]
+colors = PackedColorArray(0.509804, 0.180392, 0.65098, 1, 0.509804, 0.180392, 0.65098, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pbjro"]
+gradient = SubResource("Gradient_uptpd")
+
+[sub_resource type="Gradient" id="Gradient_sf4i1"]
+colors = PackedColorArray(0.129412, 0.129412, 0.129412, 1, 0.129412, 0.129412, 0.129412, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n3h1h"]
+gradient = SubResource("Gradient_sf4i1")
+
+[sub_resource type="FontFile" id="FontFile_s5mpe"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/20/0/ascent = 0.0
+cache/0/20/0/descent = 0.0
+cache/0/20/0/underline_position = 0.0
+cache/0/20/0/underline_thickness = 0.0
+cache/0/20/0/scale = 1.0
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/100/0/ascent = 0.0
+cache/0/100/0/descent = 0.0
+cache/0/100/0/underline_position = 0.0
+cache/0/100/0/underline_thickness = 0.0
+cache/0/100/0/scale = 1.0
+cache/0/200/0/ascent = 0.0
+cache/0/200/0/descent = 0.0
+cache/0/200/0/underline_position = 0.0
+cache/0/200/0/underline_thickness = 0.0
+cache/0/200/0/scale = 1.0
+cache/0/40/0/ascent = 0.0
+cache/0/40/0/descent = 0.0
+cache/0/40/0/underline_position = 0.0
+cache/0/40/0/underline_thickness = 0.0
+cache/0/40/0/scale = 1.0
+cache/0/30/0/ascent = 0.0
+cache/0/30/0/descent = 0.0
+cache/0/30/0/underline_position = 0.0
+cache/0/30/0/underline_thickness = 0.0
+cache/0/30/0/scale = 1.0
+
+[sub_resource type="Gradient" id="Gradient_m07c4"]
+colors = PackedColorArray(0.552941, 0.94902, 0.72549, 1, 0.0784314, 0.364706, 0.176471, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_26mh8"]
+gradient = SubResource("Gradient_m07c4")
+fill_to = Vector2(0, 1)
+
+[node name="TestScreen1" type="Node2D"]
+
+[node name="Map" type="Node2D" parent="."]
+
+[node name="background" type="Sprite2D" parent="Map"]
+z_index = -10
+position = Vector2(930.518, 735.938)
+rotation = 3.14159
+scale = Vector2(48.7673, 37.9198)
+texture = SubResource("GradientTexture2D_ql7qt")
+
+[node name="Squares" type="Node2D" parent="Map"]
+
+[node name="Wall_prefab2" parent="Map/Squares" instance=ExtResource("1_n27t5")]
+position = Vector2(32, 320)
+scale = Vector2(26, 3)
+
+[node name="Ceiling1" parent="Map/Squares" instance=ExtResource("1_n27t5")]
+position = Vector2(128, 0)
+scale = Vector2(36, 2)
+
+[node name="Wall_prefab" parent="Map/Squares" instance=ExtResource("1_n27t5")]
+scale = Vector2(1, 13)
+
+[node name="Wall_prefab3" parent="Map/Squares" instance=ExtResource("1_n27t5")]
+position = Vector2(1248, 64)
+scale = Vector2(1, 9)
+
+[node name="Wall_prefab4" parent="Map/Squares" instance=ExtResource("1_n27t5")]
+position = Vector2(1248, 480)
+scale = Vector2(1, 8)
+
+[node name="Wall_prefab5" parent="Map/Squares" instance=ExtResource("1_n27t5")]
+position = Vector2(992, 576)
+scale = Vector2(8, 2)
+
+[node name="Wall_prefab6" parent="Map/Squares" instance=ExtResource("1_n27t5")]
+position = Vector2(512, 640)
+scale = Vector2(23, 1)
+
+[node name="Wall_prefab7" parent="Map/Squares" instance=ExtResource("1_n27t5")]
+position = Vector2(0, 672)
+scale = Vector2(39, 2)
+
+[node name="MovingPlatform2" type="AnimatableBody2D" parent="Map/Squares"]
+scale = Vector2(1, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/MovingPlatform2"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_47cpl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/MovingPlatform2"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_g27x1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/Squares/MovingPlatform2"]
+libraries = {
+"": SubResource("AnimationLibrary_08ewj")
+}
+autoplay = "downUp"
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/Squares/MovingPlatform2"]
+occluder = SubResource("OccluderPolygon2D_trvwm")
+
+[node name="MovingPlatform3" type="AnimatableBody2D" parent="Map/Squares"]
+scale = Vector2(6, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/MovingPlatform3"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_47cpl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/MovingPlatform3"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_g27x1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/Squares/MovingPlatform3"]
+libraries = {
+"": SubResource("AnimationLibrary_08ewj")
+}
+autoplay = "updown"
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/Squares/MovingPlatform3"]
+occluder = SubResource("OccluderPolygon2D_trvwm")
+
+[node name="MovingPlatform" type="AnimatableBody2D" parent="Map/Squares"]
+position = Vector2(208, 128)
+scale = Vector2(2, 8)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/MovingPlatform"]
+scale = Vector2(0.25, 0.25)
+texture = SubResource("GradientTexture2D_47cpl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/MovingPlatform"]
+shape = SubResource("RectangleShape2D_sih23")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/Squares/MovingPlatform"]
+libraries = {
+"": SubResource("AnimationLibrary_41c7q")
+}
+autoplay = "downUp"
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/Squares/MovingPlatform"]
+occluder = SubResource("OccluderPolygon2D_hyow1")
+
+[node name="MovingPlatform5" type="AnimatableBody2D" parent="Map/Squares"]
+position = Vector2(848, 448)
+scale = Vector2(2, 8)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/MovingPlatform5"]
+scale = Vector2(0.25, 0.25)
+texture = SubResource("GradientTexture2D_47cpl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/MovingPlatform5"]
+shape = SubResource("RectangleShape2D_sih23")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/Squares/MovingPlatform5"]
+libraries = {
+"": SubResource("AnimationLibrary_6fwol")
+}
+autoplay = "upDown"
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/Squares/MovingPlatform5"]
+occluder = SubResource("OccluderPolygon2D_hyow1")
+
+[node name="MovingPlatform6" type="AnimatableBody2D" parent="Map/Squares"]
+position = Vector2(80, 480)
+scale = Vector2(10, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/MovingPlatform6"]
+scale = Vector2(0.25, 0.25)
+texture = SubResource("GradientTexture2D_47cpl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/MovingPlatform6"]
+shape = SubResource("RectangleShape2D_sih23")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/Squares/MovingPlatform6"]
+libraries = {
+"": SubResource("AnimationLibrary_2krxf")
+}
+autoplay = "upDown"
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/Squares/MovingPlatform6"]
+occluder = SubResource("OccluderPolygon2D_hyow1")
+
+[node name="MovingPlatform7" type="AnimatableBody2D" parent="Map/Squares"]
+position = Vector2(656, 608)
+scale = Vector2(2, 8)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/MovingPlatform7"]
+scale = Vector2(0.25, 0.25)
+texture = SubResource("GradientTexture2D_47cpl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/MovingPlatform7"]
+shape = SubResource("RectangleShape2D_sih23")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/Squares/MovingPlatform7"]
+libraries = {
+"": SubResource("AnimationLibrary_v2rwx")
+}
+autoplay = "upDown"
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/Squares/MovingPlatform7"]
+occluder = SubResource("OccluderPolygon2D_hyow1")
+
+[node name="MovingPlatform8" type="AnimatableBody2D" parent="Map/Squares"]
+position = Vector2(1104, 112)
+scale = Vector2(10, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/MovingPlatform8"]
+scale = Vector2(0.25, 0.25)
+texture = SubResource("GradientTexture2D_47cpl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/MovingPlatform8"]
+shape = SubResource("RectangleShape2D_sih23")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/Squares/MovingPlatform8"]
+libraries = {
+"": SubResource("AnimationLibrary_eu4do")
+}
+autoplay = "upDown"
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/Squares/MovingPlatform8"]
+occluder = SubResource("OccluderPolygon2D_hyow1")
+
+[node name="MovingPlatform9" type="AnimatableBody2D" parent="Map/Squares"]
+position = Vector2(1104, 400)
+scale = Vector2(2, 14)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/MovingPlatform9"]
+scale = Vector2(0.25, 0.25)
+texture = SubResource("GradientTexture2D_47cpl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/MovingPlatform9"]
+shape = SubResource("RectangleShape2D_sih23")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/Squares/MovingPlatform9"]
+libraries = {
+"": SubResource("AnimationLibrary_tnv4x")
+}
+autoplay = "upDown"
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/Squares/MovingPlatform9"]
+occluder = SubResource("OccluderPolygon2D_hyow1")
+
+[node name="MovingPlatform10" type="AnimatableBody2D" parent="Map/Squares/MovingPlatform9"]
+position = Vector2(40, -6.85715)
+scale = Vector2(4, 0.142857)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/MovingPlatform9/MovingPlatform10"]
+scale = Vector2(0.25, 0.25)
+texture = SubResource("GradientTexture2D_47cpl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/MovingPlatform9/MovingPlatform10"]
+shape = SubResource("RectangleShape2D_sih23")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/Squares/MovingPlatform9/MovingPlatform10"]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/Squares/MovingPlatform9/MovingPlatform10"]
+occluder = SubResource("OccluderPolygon2D_hyow1")
+
+[node name="MovingPlatform10" type="AnimatableBody2D" parent="Map/Squares"]
+position = Vector2(96, 272)
+scale = Vector2(8, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Squares/MovingPlatform10"]
+scale = Vector2(0.25, 0.25)
+texture = SubResource("GradientTexture2D_47cpl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Squares/MovingPlatform10"]
+shape = SubResource("RectangleShape2D_sih23")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/Squares/MovingPlatform10"]
+libraries = {
+"": SubResource("AnimationLibrary_6eemc")
+}
+autoplay = "side to side"
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/Squares/MovingPlatform10"]
+occluder = SubResource("OccluderPolygon2D_hyow1")
+
+[node name="SecretWall" type="Sprite2D" parent="Map/Squares"]
+position = Vector2(1264, 412)
+scale = Vector2(0.5, 2.125)
+texture = SubResource("GradientTexture2D_pbjro")
+
+[node name="Player" parent="Map" node_paths=PackedStringArray("spawn_point", "live_counter", "score_counter") instance=ExtResource("2_hbf8m")]
+position = Vector2(56, 96)
+spawn_point = NodePath("../SpawnPoint")
+live_counter = NodePath("../UI2/Lives")
+score_counter = NodePath("../UI2/Score")
+
+[node name="UI2" type="CanvasLayer" parent="Map"]
+
+[node name="Score" type="Label" parent="Map/UI2"]
+offset_left = 41.0
+offset_top = 45.0
+offset_right = 93.0
+offset_bottom = 68.0
+text = "Score: "
+
+[node name="Lives" type="Label" parent="Map/UI2"]
+offset_left = 32.0
+offset_top = 16.0
+offset_right = 80.0
+offset_bottom = 39.0
+text = "Lives: "
+
+[node name="TestScreen" type="Control" parent="Map/UI2"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -10.0
+offset_top = 238.0
+offset_right = 638.0
+offset_bottom = 497.0
+script = ExtResource("3_0d51e")
+
+[node name="Button" type="Button" parent="Map/UI2/TestScreen"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 264.0
+offset_right = 209.0
+offset_bottom = 295.0
+text = "Deactivate Test Screen
+"
+
+[node name="CheckButton" type="CheckButton" parent="Map/UI2/TestScreen"]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 264.0
+offset_right = 416.0
+offset_bottom = 295.0
+text = "Fansy press button "
+
+[node name="InGameUI" type="Control" parent="Map/UI2"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -40.0
+offset_top = 240.0
+offset_right = 608.0
+offset_bottom = 499.0
+script = ExtResource("4_5dq5t")
+
+[node name="SpeedRunModule" type="Control" parent="Map/UI2/InGameUI"]
+anchors_preset = 0
+offset_left = 923.0
+offset_top = 270.0
+offset_right = 963.0
+offset_bottom = 310.0
+script = ExtResource("5_j24li")
+is_running = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/UI2/InGameUI/SpeedRunModule"]
+position = Vector2(22, 9)
+scale = Vector2(1.6875, 0.625)
+texture = SubResource("GradientTexture2D_n3h1h")
+
+[node name="MinsHours" type="Label" parent="Map/UI2/InGameUI/SpeedRunModule"]
+clip_children = 2
+layout_mode = 0
+offset_left = -28.0
+offset_top = -12.0
+offset_right = 56.0
+offset_bottom = 29.0
+theme_override_fonts/font = SubResource("FontFile_s5mpe")
+theme_override_font_sizes/font_size = 30
+text = "00:00"
+
+[node name="TextureRect" type="TextureRect" parent="Map/UI2/InGameUI/SpeedRunModule/MinsHours"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 3.0
+offset_right = 86.0
+offset_bottom = 67.0
+scale = Vector2(1, 0.6)
+texture = SubResource("GradientTexture2D_26mh8")
+
+[node name="Mili" type="Label" parent="Map/UI2/InGameUI/SpeedRunModule"]
+clip_children = 2
+layout_mode = 0
+offset_left = 47.0
+offset_top = -2.0
+offset_right = 73.0
+offset_bottom = 26.0
+theme_override_fonts/font = SubResource("FontFile_s5mpe")
+theme_override_font_sizes/font_size = 20
+text = ".00"
+
+[node name="TextureRect" type="TextureRect" parent="Map/UI2/InGameUI/SpeedRunModule/Mili"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -9.0
+offset_right = 62.0
+offset_bottom = 55.0
+scale = Vector2(1, 0.6)
+texture = SubResource("GradientTexture2D_26mh8")
+
+[node name="SpawnPoint" type="Node2D" parent="Map"]
+position = Vector2(64, 224)
+
+[connection signal="pressed" from="Map/UI2/TestScreen/Button" to="Map/UI2/TestScreen" method="button_press"]

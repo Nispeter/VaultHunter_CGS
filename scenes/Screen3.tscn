@@ -1,0 +1,1466 @@
+[gd_scene load_steps=68 format=3 uid="uid://c1aah5waossuq"]
+
+[ext_resource type="PackedScene" uid="uid://d3s6ypmpl50d5" path="res://prefabs/wall_prefab.tscn" id="1_rdoos"]
+
+[sub_resource type="Gradient" id="Gradient_tdpmr"]
+colors = PackedColorArray(0.235294, 0.180392, 0.34902, 1, 0.235294, 0.180392, 0.34902, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dvi8e"]
+gradient = SubResource("Gradient_tdpmr")
+
+[sub_resource type="Gradient" id="Gradient_6tap2"]
+offsets = PackedFloat32Array(0.24026, 0.597403, 1)
+colors = PackedColorArray(0.675269, 0.477732, 0.97304, 1, 0.584582, 0.314767, 0.796526, 1, 0.509804, 0.180392, 0.65098, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1js6h"]
+gradient = SubResource("Gradient_6tap2")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfbca"]
+size = Vector2(32, 32)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qtmul"]
+polygon = PackedVector2Array(0, 0, 0, 32, 32, 32, 32, 0)
+
+[sub_resource type="Animation" id="Animation_i6dq3"]
+resource_name = "Screen3"
+length = 41.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 22, 24, 34, 36, 41),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1984, 192), Vector2(1984, 192), Vector2(1984, 192), Vector2(1984, 416), Vector2(1984, 416), Vector2(1600, 480), Vector2(1600, 480)]
+}
+
+[sub_resource type="Animation" id="Animation_tyotb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1984, 192)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n80tk"]
+_data = {
+"RESET": SubResource("Animation_tyotb"),
+"Screen3": SubResource("Animation_i6dq3")
+}
+
+[sub_resource type="Animation" id="Animation_g1eij"]
+resource_name = "side to side"
+length = 41.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 12, 22, 24, 34, 36, 41),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(96, 288), Vector2(96, 288), Vector2(32, 288), Vector2(32, 288), Vector2(32, 64), Vector2(32, 64), Vector2(32, 224), Vector2(32, 224)]
+}
+
+[sub_resource type="Animation" id="Animation_sdy5x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(96, 288)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0wiy4"]
+_data = {
+"RESET": SubResource("Animation_sdy5x"),
+"side to side": SubResource("Animation_g1eij")
+}
+
+[sub_resource type="Animation" id="Animation_gqrig"]
+resource_name = "Screen3"
+length = 41.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 12, 34, 36, 41),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(192, 672), Vector2(192, 672), Vector2(128, 576), Vector2(128, 576), Vector2(544, 576), Vector2(544, 576)]
+}
+
+[sub_resource type="Animation" id="Animation_f67vr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(192, 672)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ums1a"]
+_data = {
+"RESET": SubResource("Animation_f67vr"),
+"Screen3": SubResource("Animation_gqrig")
+}
+
+[sub_resource type="Animation" id="Animation_awox6"]
+resource_name = "Screen3"
+length = 41.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 12, 22, 24, 41),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(352, 96), Vector2(352, 96), Vector2(448, 96), Vector2(448, 96), Vector2(352, 96), Vector2(352, 96)]
+}
+
+[sub_resource type="Animation" id="Animation_lhk63"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(352, 96)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k36rl"]
+_data = {
+"RESET": SubResource("Animation_lhk63"),
+"Screen3": SubResource("Animation_awox6")
+}
+
+[sub_resource type="Animation" id="Animation_3vg0j"]
+resource_name = "Screen3"
+length = 41.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 12, 22, 24, 34),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(384, 416), Vector2(384, 416), Vector2(448, 416), Vector2(448, 416), Vector2(160, 416), Vector2(160, 416)]
+}
+
+[sub_resource type="Animation" id="Animation_jl364"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(384, 416)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lfqct"]
+_data = {
+"RESET": SubResource("Animation_jl364"),
+"Screen3": SubResource("Animation_3vg0j")
+}
+
+[sub_resource type="Animation" id="Animation_canue"]
+resource_name = "Screen3"
+length = 41.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 12, 22, 24, 34, 36, 41),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(576, 576), Vector2(576, 576), Vector2(608, 576), Vector2(608, 576), Vector2(608, 576), Vector2(608, 576), Vector2(608, 576), Vector2(608, 576)]
+}
+
+[sub_resource type="Animation" id="Animation_ytdf3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(576, 576)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oxdc4"]
+_data = {
+"RESET": SubResource("Animation_ytdf3"),
+"Screen3": SubResource("Animation_canue")
+}
+
+[sub_resource type="Animation" id="Animation_owd5u"]
+resource_name = "Screen3"
+length = 41.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 12, 22, 24, 34),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(672, 192), Vector2(672, 192), Vector2(672, 352), Vector2(672, 352), Vector2(384, 352), Vector2(384, 352)]
+}
+
+[sub_resource type="Animation" id="Animation_lja3s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(672, 192)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qkybr"]
+_data = {
+"RESET": SubResource("Animation_lja3s"),
+"Screen3": SubResource("Animation_owd5u")
+}
+
+[sub_resource type="Animation" id="Animation_k5ia4"]
+resource_name = "Screen3"
+length = 41.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 12, 22.001, 24, 34, 36, 41),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(736, 352), Vector2(736, 352), Vector2(736, 544), Vector2(736, 544), Vector2(736, 32), Vector2(736, 32), Vector2(928, 32), Vector2(928, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_j63e0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(736, 352)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hnp6d"]
+_data = {
+"RESET": SubResource("Animation_j63e0"),
+"Screen3": SubResource("Animation_k5ia4")
+}
+
+[sub_resource type="Animation" id="Animation_2sbc7"]
+resource_name = "Screen3"
+length = 41.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 12, 22, 24, 34, 36, 41),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(832, 32), Vector2(832, 32), Vector2(832, 96), Vector2(832, 96), Vector2(832, 32), Vector2(832, 32), Vector2(1824, 32), Vector2(1824, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_ye20h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(832, 32)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hks2x"]
+_data = {
+"RESET": SubResource("Animation_ye20h"),
+"Screen3": SubResource("Animation_2sbc7")
+}
+
+[sub_resource type="Animation" id="Animation_0itid"]
+resource_name = "Screen3"
+length = 41.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 12, 22, 24, 34, 36, 41),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(896, 288), Vector2(896, 288), Vector2(896, 288), Vector2(896, 288), Vector2(672, 288), Vector2(672, 288), Vector2(992, 256), Vector2(992, 256)]
+}
+
+[sub_resource type="Animation" id="Animation_j80yy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(896, 288)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2b6ex"]
+_data = {
+"RESET": SubResource("Animation_j80yy"),
+"Screen3": SubResource("Animation_0itid")
+}
+
+[sub_resource type="Animation" id="Animation_3mfv7"]
+resource_name = "Screen3"
+length = 41.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 12, 22, 24, 34, 36, 41),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(896, 544), Vector2(896, 544), Vector2(896, 544), Vector2(896, 544), Vector2(896, 544), Vector2(896, 544), Vector2(1184, 544), Vector2(1184, 544)]
+}
+
+[sub_resource type="Animation" id="Animation_rcgb5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(896, 544)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0jirr"]
+_data = {
+"RESET": SubResource("Animation_rcgb5"),
+"Screen3": SubResource("Animation_3mfv7")
+}
+
+[sub_resource type="Animation" id="Animation_c7f43"]
+resource_name = "Screen3"
+length = 41.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 12, 22, 24, 34, 36, 41),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1088, 480), Vector2(1088, 480), Vector2(1088, 288), Vector2(1088, 288), Vector2(864, 288), Vector2(864, 288), Vector2(1184, 288), Vector2(1184, 288)]
+}
+
+[sub_resource type="Animation" id="Animation_i0y3d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1088, 480)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mpam1"]
+_data = {
+"RESET": SubResource("Animation_i0y3d"),
+"Screen3": SubResource("Animation_c7f43")
+}
+
+[sub_resource type="Animation" id="Animation_ujpee"]
+resource_name = "Screen3"
+length = 41.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 12, 22, 24, 34, 36, 41),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1120, 224), Vector2(1120, 224), Vector2(1120, 224), Vector2(1120, 224), Vector2(1128, 480), Vector2(1128, 480), Vector2(1312, 480), Vector2(1312, 480)]
+}
+
+[sub_resource type="Animation" id="Animation_08xie"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1120, 224)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fiqws"]
+_data = {
+"RESET": SubResource("Animation_08xie"),
+"Screen3": SubResource("Animation_ujpee")
+}
+
+[sub_resource type="Animation" id="Animation_lj82j"]
+resource_name = "Screen3"
+length = 41.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 12, 22, 24, 34, 41),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1184, 512), Vector2(1184, 512), Vector2(1184, 512), Vector2(1184, 512), Vector2(992, 608), Vector2(992, 608), Vector2(992, 608)]
+}
+
+[sub_resource type="Animation" id="Animation_7hnso"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1184, 512)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_efmyd"]
+_data = {
+"RESET": SubResource("Animation_7hnso"),
+"Screen3": SubResource("Animation_lj82j")
+}
+
+[sub_resource type="Animation" id="Animation_u3xon"]
+resource_name = "Screen3"
+length = 41.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 12, 22, 24, 34, 36, 41),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1280, 640), Vector2(1280, 640), Vector2(1280, 640), Vector2(1280, 640), Vector2(1344, 672), Vector2(1344, 672), Vector2(1344, 672), Vector2(1344, 672)]
+}
+
+[sub_resource type="Animation" id="Animation_wki20"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1280, 640)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lbw4y"]
+_data = {
+"RESET": SubResource("Animation_wki20"),
+"Screen3": SubResource("Animation_u3xon")
+}
+
+[sub_resource type="Animation" id="Animation_l3y5j"]
+resource_name = "Screen3"
+length = 41.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 12, 22, 24, 34, 41),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1408, 448), Vector2(1408, 448), Vector2(1408, 544), Vector2(1408, 544), Vector2(1408, 480), Vector2(1408, 480), Vector2(1408, 480)]
+}
+
+[sub_resource type="Animation" id="Animation_yly3r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1408, 448)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_73588"]
+_data = {
+"RESET": SubResource("Animation_yly3r"),
+"Screen3": SubResource("Animation_l3y5j")
+}
+
+[sub_resource type="Animation" id="Animation_khxk6"]
+resource_name = "Screen3"
+length = 41.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 12, 22, 24, 34, 36, 41),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1376, 128), Vector2(1376, 128), Vector2(1376, 192), Vector2(1376, 192), Vector2(1376, 32), Vector2(1376, 32), Vector2(1376, 544), Vector2(1376, 544)]
+}
+
+[sub_resource type="Animation" id="Animation_pjwwr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1376, 128)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hop5b"]
+_data = {
+"RESET": SubResource("Animation_pjwwr"),
+"Screen3": SubResource("Animation_khxk6")
+}
+
+[sub_resource type="Animation" id="Animation_8epge"]
+resource_name = "Screen1"
+length = 41.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 12, 22, 24, 34, 36, 41),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1600, 416), Vector2(1600, 416), Vector2(1600, 384), Vector2(1600, 384), Vector2(1600, 448), Vector2(1600, 448), Vector2(1760, 448), Vector2(1760, 448)]
+}
+
+[sub_resource type="Animation" id="Animation_hmvyt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1600, 416)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gcb5l"]
+_data = {
+"RESET": SubResource("Animation_hmvyt"),
+"Screen1": SubResource("Animation_8epge")
+}
+
+[sub_resource type="Animation" id="Animation_qm58s"]
+resource_name = "Screen3"
+length = 41.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 12, 22, 24, 34, 36, 41),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1600, 128), Vector2(1600, 128), Vector2(1792, 128), Vector2(1792, 128), Vector2(1952, 128), Vector2(1952, 128), Vector2(1952, 352), Vector2(1952, 352)]
+}
+
+[sub_resource type="Animation" id="Animation_rl83j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1600, 128)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bwdq1"]
+_data = {
+"RESET": SubResource("Animation_rl83j"),
+"Screen3": SubResource("Animation_qm58s")
+}
+
+[sub_resource type="Animation" id="Animation_c6445"]
+resource_name = "Screen3"
+length = 41.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 12, 22, 24, 34, 36, 41),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1856, 480), Vector2(1856, 480), Vector2(1856, 384), Vector2(1856, 384), Vector2(1824, 608), Vector2(1824, 608), Vector2(1888, 576), Vector2(1888, 576)]
+}
+
+[sub_resource type="Animation" id="Animation_u7hgh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1856, 480)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rb5fr"]
+_data = {
+"RESET": SubResource("Animation_u7hgh"),
+"Screen3": SubResource("Animation_c6445")
+}
+
+[node name="Screen3" type="Node2D"]
+
+[node name="Map" type="Node2D" parent="."]
+
+[node name="background" type="Sprite2D" parent="Map"]
+z_index = -10
+position = Vector2(1056, 808)
+rotation = 3.14159
+scale = Vector2(436, 339.023)
+texture = SubResource("GradientTexture2D_dvi8e")
+
+[node name="StaticSquares" type="Node2D" parent="Map"]
+
+[node name="LeftWall" parent="Map/StaticSquares" instance=ExtResource("1_rdoos")]
+scale = Vector2(1, 24)
+
+[node name="Floor" parent="Map/StaticSquares" instance=ExtResource("1_rdoos")]
+position = Vector2(32, 704)
+scale = Vector2(65, 2)
+
+[node name="Floor2" parent="Map/StaticSquares" instance=ExtResource("1_rdoos")]
+position = Vector2(96, 672)
+
+[node name="Ceiling" parent="Map/StaticSquares" instance=ExtResource("1_rdoos")]
+position = Vector2(416, 0)
+scale = Vector2(53, 1)
+
+[node name="LeftWall2" parent="Map/StaticSquares" instance=ExtResource("1_rdoos")]
+position = Vector2(32, 512)
+scale = Vector2(1, 6)
+
+[node name="LeftWall3" parent="Map/StaticSquares" instance=ExtResource("1_rdoos")]
+position = Vector2(64, 608)
+scale = Vector2(1, 3)
+
+[node name="Floor3" parent="Map/StaticSquares" instance=ExtResource("1_rdoos")]
+position = Vector2(736, 672)
+scale = Vector2(19, 1)
+
+[node name="Floor4" parent="Map/StaticSquares" instance=ExtResource("1_rdoos")]
+position = Vector2(864, 608)
+scale = Vector2(4, 1)
+
+[node name="Floor5" parent="Map/StaticSquares" instance=ExtResource("1_rdoos")]
+position = Vector2(800, 640)
+scale = Vector2(13, 1)
+
+[node name="Floor6" parent="Map/StaticSquares" instance=ExtResource("1_rdoos")]
+position = Vector2(1984, 576)
+scale = Vector2(4, 1)
+
+[node name="Floor7" parent="Map/StaticSquares" instance=ExtResource("1_rdoos")]
+position = Vector2(1920, 608)
+scale = Vector2(6, 1)
+
+[node name="Floor8" parent="Map/StaticSquares" instance=ExtResource("1_rdoos")]
+position = Vector2(1856, 640)
+scale = Vector2(8, 1)
+
+[node name="Floor9" parent="Map/StaticSquares" instance=ExtResource("1_rdoos")]
+position = Vector2(1792, 672)
+scale = Vector2(10, 1)
+
+[node name="MovingSquares" type="Node2D" parent="Map"]
+
+[node name="MovingPlatform" type="AnimatableBody2D" parent="Map/MovingSquares"]
+position = Vector2(1984, 192)
+scale = Vector2(4, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/MovingPlatform"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/MovingPlatform"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/MovingPlatform"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/MovingPlatform"]
+libraries = {
+"": SubResource("AnimationLibrary_n80tk")
+}
+autoplay = "Screen3"
+
+[node name="Completa" type="AnimatableBody2D" parent="Map/MovingSquares"]
+position = Vector2(96, 288)
+scale = Vector2(6, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/Completa"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/Completa"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/Completa"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/Completa"]
+libraries = {
+"": SubResource("AnimationLibrary_0wiy4")
+}
+autoplay = "side to side"
+
+[node name="MovingPlatform3" type="AnimatableBody2D" parent="Map/MovingSquares/Completa"]
+position = Vector2(26.6667, 0)
+scale = Vector2(0.167, 6)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/Completa/MovingPlatform3"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/Completa/MovingPlatform3"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/Completa/MovingPlatform3"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/Completa/MovingPlatform3"]
+
+[node name="Completa2" type="AnimatableBody2D" parent="Map/MovingSquares"]
+position = Vector2(192, 672)
+scale = Vector2(9, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/Completa2"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/Completa2"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/Completa2"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/Completa2"]
+libraries = {
+"": SubResource("AnimationLibrary_ums1a")
+}
+autoplay = "Screen3"
+
+[node name="MovingPlatform5" type="AnimatableBody2D" parent="Map/MovingSquares/Completa2"]
+position = Vector2(7.11111, -32)
+scale = Vector2(0.555556, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/Completa2/MovingPlatform5"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/Completa2/MovingPlatform5"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/Completa2/MovingPlatform5"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/Completa2/MovingPlatform5"]
+
+[node name="Completa3" type="AnimatableBody2D" parent="Map/MovingSquares"]
+position = Vector2(352, 96)
+scale = Vector2(3, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/Completa3"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/Completa3"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/Completa3"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/Completa3"]
+libraries = {
+"": SubResource("AnimationLibrary_k36rl")
+}
+autoplay = "Screen3"
+
+[node name="MovingPlatform7" type="AnimatableBody2D" parent="Map/MovingSquares/Completa3"]
+position = Vector2(0, 32)
+scale = Vector2(2.66667, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/Completa3/MovingPlatform7"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/Completa3/MovingPlatform7"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/Completa3/MovingPlatform7"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/Completa3/MovingPlatform7"]
+
+[node name="Incompleta" type="AnimatableBody2D" parent="Map/MovingSquares"]
+position = Vector2(384, 416)
+scale = Vector2(7, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/Incompleta"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/Incompleta"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/Incompleta"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/Incompleta"]
+libraries = {
+"": SubResource("AnimationLibrary_lfqct")
+}
+autoplay = "Screen3"
+
+[node name="MovingPlatform3" type="AnimatableBody2D" parent="Map/MovingSquares/Incompleta"]
+position = Vector2(27.4286, -32)
+scale = Vector2(0.428571, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/Incompleta/MovingPlatform3"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/Incompleta/MovingPlatform3"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/Incompleta/MovingPlatform3"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/Incompleta/MovingPlatform3"]
+
+[node name="Completa4" type="AnimatableBody2D" parent="Map/MovingSquares"]
+position = Vector2(576, 576)
+scale = Vector2(1, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/Completa4"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/Completa4"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/Completa4"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/Completa4"]
+libraries = {
+"": SubResource("AnimationLibrary_oxdc4")
+}
+autoplay = "Screen3"
+
+[node name="Incompleta2" type="AnimatableBody2D" parent="Map/MovingSquares"]
+position = Vector2(672, 192)
+scale = Vector2(6, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/Incompleta2"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/Incompleta2"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/Incompleta2"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/Incompleta2"]
+libraries = {
+"": SubResource("AnimationLibrary_qkybr")
+}
+autoplay = "Screen3"
+
+[node name="MovingPlatform9" type="AnimatableBody2D" parent="Map/MovingSquares/Incompleta2"]
+position = Vector2(10.6667, 32)
+scale = Vector2(0.167, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/Incompleta2/MovingPlatform9"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/Incompleta2/MovingPlatform9"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/Incompleta2/MovingPlatform9"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/Incompleta2/MovingPlatform9"]
+
+[node name="Completa5" type="AnimatableBody2D" parent="Map/MovingSquares"]
+position = Vector2(736, 352)
+scale = Vector2(1, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/Completa5"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/Completa5"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/Completa5"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/Completa5"]
+libraries = {
+"": SubResource("AnimationLibrary_hnp6d")
+}
+autoplay = "Screen3"
+
+[node name="Completa6" type="AnimatableBody2D" parent="Map/MovingSquares"]
+position = Vector2(832, 32)
+scale = Vector2(9, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/Completa6"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/Completa6"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/Completa6"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/Completa6"]
+libraries = {
+"": SubResource("AnimationLibrary_hks2x")
+}
+autoplay = "Screen3"
+
+[node name="MovingPlatform3" type="AnimatableBody2D" parent="Map/MovingSquares/Completa6"]
+position = Vector2(17.7778, 32)
+scale = Vector2(0.111111, 1.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/Completa6/MovingPlatform3"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/Completa6/MovingPlatform3"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/Completa6/MovingPlatform3"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/Completa6/MovingPlatform3"]
+
+[node name="Completa7" type="AnimatableBody2D" parent="Map/MovingSquares"]
+position = Vector2(896, 288)
+scale = Vector2(6, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/Completa7"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/Completa7"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/Completa7"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/Completa7"]
+libraries = {
+"": SubResource("AnimationLibrary_2b6ex")
+}
+autoplay = "Screen3"
+
+[node name="Completa8" type="AnimatableBody2D" parent="Map/MovingSquares"]
+position = Vector2(896, 544)
+scale = Vector2(4, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/Completa8"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/Completa8"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/Completa8"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/Completa8"]
+libraries = {
+"": SubResource("AnimationLibrary_0jirr")
+}
+autoplay = "Screen3"
+
+[node name="Completa9" type="AnimatableBody2D" parent="Map/MovingSquares"]
+position = Vector2(1088, 480)
+scale = Vector2(1, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/Completa9"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/Completa9"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/Completa9"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/Completa9"]
+libraries = {
+"": SubResource("AnimationLibrary_mpam1")
+}
+autoplay = "Screen3"
+
+[node name="Completa10" type="AnimatableBody2D" parent="Map/MovingSquares"]
+position = Vector2(1120, 224)
+scale = Vector2(5, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/Completa10"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/Completa10"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/Completa10"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/Completa10"]
+libraries = {
+"": SubResource("AnimationLibrary_fiqws")
+}
+autoplay = "Screen3"
+
+[node name="MovingPlatform14" type="AnimatableBody2D" parent="Map/MovingSquares/Completa10"]
+position = Vector2(19.2, -32)
+scale = Vector2(0.8, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/Completa10/MovingPlatform14"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/Completa10/MovingPlatform14"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/Completa10/MovingPlatform14"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/Completa10/MovingPlatform14"]
+
+[node name="Completa11" type="AnimatableBody2D" parent="Map/MovingSquares"]
+position = Vector2(1184, 512)
+scale = Vector2(6, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/Completa11"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/Completa11"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/Completa11"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/Completa11"]
+libraries = {
+"": SubResource("AnimationLibrary_efmyd")
+}
+autoplay = "Screen3"
+
+[node name="Completa12" type="AnimatableBody2D" parent="Map/MovingSquares"]
+position = Vector2(1280, 640)
+scale = Vector2(15, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/Completa12"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/Completa12"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/Completa12"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/Completa12"]
+libraries = {
+"": SubResource("AnimationLibrary_lbw4y")
+}
+autoplay = "Screen3"
+
+[node name="Completa13" type="AnimatableBody2D" parent="Map/MovingSquares"]
+position = Vector2(1408, 448)
+scale = Vector2(1, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/Completa13"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/Completa13"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/Completa13"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/Completa13"]
+libraries = {
+"": SubResource("AnimationLibrary_73588")
+}
+autoplay = "Screen3"
+
+[node name="MovingPlatform17" type="AnimatableBody2D" parent="Map/MovingSquares/Completa13"]
+position = Vector2(32, 0)
+scale = Vector2(3, 0.333333)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/Completa13/MovingPlatform17"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/Completa13/MovingPlatform17"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/Completa13/MovingPlatform17"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/Completa13/MovingPlatform17"]
+
+[node name="Completa14" type="AnimatableBody2D" parent="Map/MovingSquares"]
+position = Vector2(1376, 128)
+scale = Vector2(5, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/Completa14"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/Completa14"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/Completa14"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/Completa14"]
+libraries = {
+"": SubResource("AnimationLibrary_hop5b")
+}
+autoplay = "Screen3"
+
+[node name="Completa15" type="AnimatableBody2D" parent="Map/MovingSquares"]
+position = Vector2(1600, 416)
+scale = Vector2(6, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/Completa15"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/Completa15"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/Completa15"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/Completa15"]
+libraries = {
+"": SubResource("AnimationLibrary_gcb5l")
+}
+autoplay = "Screen1"
+
+[node name="Completa16" type="AnimatableBody2D" parent="Map/MovingSquares"]
+position = Vector2(1600, 128)
+scale = Vector2(3, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/Completa16"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/Completa16"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/Completa16"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/Completa16"]
+libraries = {
+"": SubResource("AnimationLibrary_bwdq1")
+}
+autoplay = "Screen3"
+
+[node name="MovingPlatform20" type="AnimatableBody2D" parent="Map/MovingSquares/Completa16"]
+position = Vector2(21.3333, -16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/Completa16/MovingPlatform20"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/Completa16/MovingPlatform20"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/Completa16/MovingPlatform20"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/Completa16/MovingPlatform20"]
+
+[node name="MovingPlatform21" type="AnimatableBody2D" parent="Map/MovingSquares"]
+position = Vector2(1856, 480)
+scale = Vector2(3, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/MovingPlatform21"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/MovingPlatform21"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/MovingPlatform21"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/MovingPlatform21"]
+libraries = {
+"": SubResource("AnimationLibrary_rb5fr")
+}
+autoplay = "Screen3"
+
+[node name="MovingPlatform20" type="AnimatableBody2D" parent="Map/MovingSquares/MovingPlatform21"]
+position = Vector2(21.3333, -128)
+scale = Vector2(0.333333, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/MovingSquares/MovingPlatform21/MovingPlatform20"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_1js6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/MovingSquares/MovingPlatform21/MovingPlatform20"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xfbca")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/MovingSquares/MovingPlatform21/MovingPlatform20"]
+occluder = SubResource("OccluderPolygon2D_qtmul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MovingSquares/MovingPlatform21/MovingPlatform20"]

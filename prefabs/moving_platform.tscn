@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=3 uid="uid://dd4xk5t8umh1m"]
+
+[sub_resource type="Gradient" id="Gradient_6tap2"]
+offsets = PackedFloat32Array(0.24026, 0.597403, 1)
+colors = PackedColorArray(0.675269, 0.477732, 0.97304, 1, 0.584582, 0.314767, 0.796526, 1, 0.509804, 0.180392, 0.65098, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_47cpl"]
+gradient = SubResource("Gradient_6tap2")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g27x1"]
+size = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_r5ibi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4mfdw"]
+resource_name = "downUp"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(384, 192), Vector2(384, 64), Vector2(384, 192)]
+}
+
+[sub_resource type="Animation" id="Animation_tepxe"]
+resource_name = "updown"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(640, 64), Vector2(640, 256), Vector2(640, 64)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_08ewj"]
+_data = {
+"RESET": SubResource("Animation_r5ibi"),
+"downUp": SubResource("Animation_4mfdw"),
+"updown": SubResource("Animation_tepxe")
+}
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_trvwm"]
+polygon = PackedVector2Array(0, 0, 0, 32, 32, 32, 32, 0)
+
+[node name="MovingPlatform" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_47cpl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_g27x1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_08ewj")
+}
+autoplay = "downUp"
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_trvwm")
