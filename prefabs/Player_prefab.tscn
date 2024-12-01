@@ -278,6 +278,7 @@ stream = ExtResource("11_rq33l")
 
 [node name="LandingSfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_3hrnd")
+pitch_scale = 1.67
 
 [node name="BoostSfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_du5aj")

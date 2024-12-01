@@ -1,19 +1,21 @@
-[gd_scene load_steps=28 format=3 uid="uid://6moaj0bk4bpi"]
+[gd_scene load_steps=31 format=3 uid="uid://6moaj0bk4bpi"]
 
 [ext_resource type="PackedScene" uid="uid://jfw74y8eg8hn" path="res://prefabs/Player_prefab.tscn" id="1_7hi53"]
 [ext_resource type="PackedScene" uid="uid://dh2av4d1xjup8" path="res://prefabs/Coin_prefab.tscn" id="1_b21j8"]
-[ext_resource type="PackedScene" uid="uid://hu5sda23sd8d" path="res://prefabs/FireBall_prefab.tscn" id="1_g31d2"]
+[ext_resource type="PackedScene" path="res://prefabs/FireBall_prefab.tscn" id="1_g31d2"]
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_kybki"]
-[ext_resource type="PackedScene" uid="uid://c4ufcefpbg3sy" path="res://prefabs/Booster_prefab.tscn" id="1_lmtrh"]
+[ext_resource type="PackedScene" path="res://prefabs/Booster_prefab.tscn" id="1_lmtrh"]
 [ext_resource type="PackedScene" uid="uid://cujsxvsn7qmw3" path="res://prefabs/DamagableBox_prefab.tscn" id="2_0lr4j"]
 [ext_resource type="PackedScene" uid="uid://b4gj8p53287vt" path="res://prefabs/Spikes_prefab.tscn" id="4_im7ar"]
 [ext_resource type="PackedScene" uid="uid://epq76chxbh1b" path="res://prefabs/HealthPack_prefab.tscn" id="4_mew0b"]
-[ext_resource type="PackedScene" uid="uid://bn5dt4ep1vuau" path="res://prefabs/platform_prefab.tscn" id="6_7ymcg"]
+[ext_resource type="PackedScene" path="res://prefabs/platform_prefab.tscn" id="6_7ymcg"]
 [ext_resource type="Script" path="res://scripts/ui/InGameUI.gd" id="7_0c1jf"]
 [ext_resource type="Script" path="res://scripts/ui/SpeedRunModule.gd" id="8_4lqte"]
 [ext_resource type="Shader" path="res://assets/shaders/cam_shader.gdshader" id="8_nfn6u"]
 [ext_resource type="PackedScene" uid="uid://7h6yabpfcref" path="res://prefabs/UI/PauseMenu_prefab.tscn" id="13_n3idn"]
 [ext_resource type="AudioStream" uid="uid://cd530hf3pux1q" path="res://assets/music/power-of-the-wind-lofi-153794.mp3" id="14_jakxt"]
+[ext_resource type="Script" path="res://scripts/ui/FinishMenu.gd" id="14_yxpeb"]
+[ext_resource type="Script" path="res://scenes/GameManager.gd" id="15_4ym23"]
 
 [sub_resource type="Gradient" id="Gradient_ef84x"]
 colors = PackedColorArray(0.235294, 0.180392, 0.34902, 1, 0.235294, 0.180392, 0.34902, 1)
@@ -22,10 +24,13 @@ colors = PackedColorArray(0.235294, 0.180392, 0.34902, 1, 0.235294, 0.180392, 0.
 gradient = SubResource("Gradient_ef84x")
 
 [sub_resource type="Gradient" id="Gradient_32jkx"]
-colors = PackedColorArray(1, 0, 0, 0.235294, 1, 0, 0, 0.235294)
+colors = PackedColorArray(0.4, 0.607843, 0, 0.235294, 0.400153, 0.607846, 9.62615e-07, 0.235294)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2k14p"]
 gradient = SubResource("Gradient_32jkx")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xnbg1"]
+size = Vector2(62.7273, 59.0908)
 
 [sub_resource type="Gradient" id="Gradient_20ggf"]
 
@@ -292,7 +297,6 @@ text = "small"
 horizontal_alignment = 1
 
 [node name="SpawnPoint" type="Node2D" parent="Map"]
-visible = false
 position = Vector2(250, 545)
 scale = Vector2(1.05217, 0.44)
 
@@ -305,6 +309,26 @@ offset_top = -30.0
 offset_right = 28.0
 offset_bottom = -7.0
 text = "SPAWN"
+
+[node name="FinishPoint" type="Node2D" parent="Map"]
+position = Vector2(-198, 546)
+scale = Vector2(1.05217, 0.44)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/FinishPoint"]
+texture = SubResource("GradientTexture2D_2k14p")
+
+[node name="Label" type="Label" parent="Map/FinishPoint"]
+offset_left = -29.0
+offset_top = -30.0
+offset_right = 28.0
+offset_bottom = -7.0
+text = "FINISH"
+
+[node name="Area2D" type="Area2D" parent="Map/FinishPoint"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/FinishPoint/Area2D"]
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_xnbg1")
 
 [node name="Squares" type="Node2D" parent="Map"]
 
@@ -435,13 +459,43 @@ offset_right = 918.0
 offset_bottom = 64.0
 text = "Lives: "
 
+[node name="FinishMenu" type="Control" parent="UI2"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 962.0
+offset_bottom = 542.0
+script = ExtResource("14_yxpeb")
+
+[node name="Button2" type="Button" parent="UI2/FinishMenu"]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 461.0
+offset_right = 582.0
+offset_bottom = 510.0
+text = "RETRY"
+
+[node name="Label" type="Label" parent="UI2/FinishMenu"]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 142.0
+offset_right = 407.0
+offset_bottom = 366.0
+
+[node name="Label2" type="Label" parent="UI2/FinishMenu"]
+layout_mode = 0
+offset_left = 548.0
+offset_top = 138.0
+offset_right = 914.0
+offset_bottom = 395.0
+
 [node name="InGameUI" type="Control" parent="UI2"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -10.0
-offset_top = 238.0
-offset_right = 638.0
-offset_bottom = 497.0
+offset_left = -180.0
+offset_top = 323.0
+offset_right = 468.0
+offset_bottom = 582.0
 script = ExtResource("7_0c1jf")
 
 [node name="SpeedRunModule" type="Control" parent="UI2/InGameUI"]
@@ -506,6 +560,12 @@ texture = SubResource("GradientTexture2D_gha4y")
 stream = ExtResource("14_jakxt")
 volume_db = -14.307
 parameters/looping = false
+
+[node name="GameManager" type="Node2D" parent="."]
+script = ExtResource("15_4ym23")
+
+[connection signal="body_entered" from="Map/FinishPoint/Area2D" to="GameManager" method="on_finish_area"]
+[connection signal="button_down" from="UI2/FinishMenu/Button2" to="GameManager" method="restart_level"]
 
 [editable path="Map/Interactables/DamageDealers/FireBall2"]
 [editable path="Map/Interactables/DamageDealers/FireBall3"]
