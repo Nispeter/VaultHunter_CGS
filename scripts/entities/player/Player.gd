@@ -10,6 +10,8 @@ var booster_manager : Node
 @export var live_counter : Label
 @export var score_counter : Label
 @export var max_lives : int
+
+@onready var coin_sfx : Node = $CoinSfx
 var current_lives : int
 var current_score : int
 
@@ -34,6 +36,7 @@ func spawn_player():
 	pass
 	
 func add_score(score_value: int):
+	coin_sfx.play()
 	current_score += score_value
 	score_counter.text = "score: " + str(current_score)
 

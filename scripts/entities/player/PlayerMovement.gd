@@ -46,6 +46,7 @@ var is_on_ground: bool = false
 
 var sprite_animator : AnimationPlayer
 @onready var jump_particles = $"../Icon/CPUParticles2D"
+@onready var jump_sfx = $"../JumpSfx"
 
 signal on_dash
 
@@ -94,9 +95,11 @@ func handle_horizontal_movement(delta: float) -> void:
 func handle_jumping() -> void:
 	#print(jump_count)
 	if is_on_wall and not player_body.is_on_floor() and Input.is_action_just_pressed("jump") and wall_jump_cooldown_time <= 0:
+		jump_sfx.play()
 		player_body.velocity = wall_jump_force * Vector2(facing_direction * -1, 1)
 		wall_jump_cooldown_time = wall_jump_cooldown
 	elif Input.is_action_just_pressed("jump") and (player_body.is_on_floor() or (jump_count < max_jumps and advanced_movement)):
+		jump_sfx.play()
 		if(coyote_time <= 0 and jump_count  == 0):				#HACK: no es bonito, pero hace el trabajo
 			jump_count += 1
 		player_body.velocity.y = -jump_force

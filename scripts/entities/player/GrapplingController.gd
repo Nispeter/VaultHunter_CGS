@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var player_body: CharacterBody2D = $".."
 @onready var raycast_angles: Node = $RayCast
+@onready var hook_sfx = $"../GrapplingHook"
 
 @export var is_active: bool = false
 var is_hooked: bool = false
@@ -40,6 +41,7 @@ func hook() -> void:
 	raycast_angles.look_at(get_global_mouse_position())
 	
 	if Input.is_action_just_pressed("grapple"):
+		hook_sfx.play()
 		var new_hook_pos = get_hook_pos()
 		if new_hook_pos:
 			hook_pos = new_hook_pos

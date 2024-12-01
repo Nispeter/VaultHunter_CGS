@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://7h6yabpfcref"]
+[gd_scene load_steps=8 format=3 uid="uid://7h6yabpfcref"]
 
 [ext_resource type="Script" path="res://scripts/ui/TestScreen_1.gd" id="1_r7i6l"]
 [ext_resource type="Shader" path="res://assets/shaders/pause_blur.gdshader" id="2_hgd02"]
+[ext_resource type="Texture2D" uid="uid://cu6ixjkdbr0ex" path="res://assets/pause_menu/controls.png" id="3_cn87b"]
+[ext_resource type="Texture2D" uid="uid://kl2413kab2sy" path="res://assets/pause_menu/controls_1.png" id="4_g22i2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_esw44"]
 shader = ExtResource("2_hgd02")
@@ -10,6 +12,20 @@ shader_parameter/amount = 1.0
 [sub_resource type="SystemFont" id="SystemFont_hc1ms"]
 font_names = PackedStringArray("Consolas")
 subpixel_positioning = 0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xggq5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_cn87b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_g22i2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="PauseMenu" type="Control"]
 visible = false
@@ -79,6 +95,14 @@ text = "Main Menu"
 [node name="Exit Game" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Exit Game"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer/HBoxContainer"]
+position = Vector2(-26, 76)
+scale = Vector2(0.748438, 0.728472)
+sprite_frames = SubResource("SpriteFrames_xggq5")
+autoplay = "default"
+frame = 1
+frame_progress = 1.0
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]

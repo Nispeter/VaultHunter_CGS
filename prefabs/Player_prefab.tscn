@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://jfw74y8eg8hn"]
+[gd_scene load_steps=20 format=3 uid="uid://jfw74y8eg8hn"]
 
 [ext_resource type="Script" path="res://scripts/entities/player/Player.gd" id="1_c8031"]
 [ext_resource type="Texture2D" uid="uid://degn8c3cl1sgh" path="res://icon.svg" id="2_xd3ao"]
@@ -7,6 +7,10 @@
 [ext_resource type="Script" path="res://scripts/entities/player/GrapplingController.gd" id="5_q8qsd"]
 [ext_resource type="Script" path="res://scripts/entities/player/BoosterManager.gd" id="6_83w3w"]
 [ext_resource type="Script" path="res://scripts/entities/player/Trail.gd" id="7_kyc3l"]
+[ext_resource type="AudioStream" uid="uid://d1mokh3410hfw" path="res://assets/sounds/jump.wav" id="8_8dhul"]
+[ext_resource type="AudioStream" uid="uid://iptqau3xprk7" path="res://assets/sounds/hit-by-a-wood-230542.mp3" id="10_goby8"]
+[ext_resource type="AudioStream" uid="uid://cyn7hnj4ry7ai" path="res://assets/sounds/ghook.wav" id="10_xg826"]
+[ext_resource type="AudioStream" uid="uid://eh750yhxj57o" path="res://assets/sounds/retro-coin-4-236671.mp3" id="11_rq33l"]
 
 [sub_resource type="Animation" id="Animation_5jeks"]
 length = 0.001
@@ -243,6 +247,11 @@ script = ExtResource("6_83w3w")
 [node name="HealthController" type="Node" parent="."]
 script = ExtResource("3_67myh")
 
+[node name="HitSfx" type="AudioStreamPlayer" parent="HealthController"]
+stream = ExtResource("10_goby8")
+volume_db = -10.454
+pitch_scale = 0.6
+
 [node name="MovementController" type="Node" parent="."]
 script = ExtResource("4_j04j7")
 max_jumps = 2
@@ -255,5 +264,14 @@ width_curve = SubResource("Curve_rmatb")
 gradient = SubResource("Gradient_bp2o1")
 script = ExtResource("7_kyc3l")
 point_lenght = 49
+
+[node name="JumpSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_8dhul")
+
+[node name="GrapplingHook" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_xg826")
+
+[node name="CoinSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_rq33l")
 
 [connection signal="loose_lives" from="HealthController" to="." method="_loose_live"]
