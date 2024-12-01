@@ -12,6 +12,7 @@ var booster_manager : Node
 @export var max_lives : int
 
 @onready var coin_sfx : Node = $CoinSfx
+@onready var boost_sfx : Node = $BoostSfx
 var current_lives : int
 var current_score : int
 
@@ -48,6 +49,7 @@ func _loose_live():
 	else: spawn_player()
 	
 func activate_booster(type,duration):
+	boost_sfx.play()
 	booster_manager.activate_booster(type,duration)
 	
 func loose_game():

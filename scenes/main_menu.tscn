@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://v5yhhtloq0ow"]
+[gd_scene load_steps=6 format=3 uid="uid://v5yhhtloq0ow"]
 
 [ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_e2b8y"]
 [ext_resource type="Texture2D" uid="uid://dleo2spxbv8q0" path="res://assets/main_menu/525.jpg" id="2_l6vhn"]
+[ext_resource type="AudioStream" uid="uid://btyxpqfp8robt" path="res://assets/music/lofi-rain-198277.mp3" id="3_ruidn"]
 
 [sub_resource type="SystemFont" id="SystemFont_ddw7j"]
 
@@ -71,6 +72,11 @@ text = "START GAME"
 [node name="Button2" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "EXIT GAME"
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ruidn")
+volume_db = -12.106
+parameters/looping = false
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Button" to="." method="_on_button_start_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Button2" to="." method="_on_button_exit_pressed"]

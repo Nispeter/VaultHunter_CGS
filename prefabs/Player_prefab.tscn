@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://jfw74y8eg8hn"]
+[gd_scene load_steps=22 format=3 uid="uid://jfw74y8eg8hn"]
 
 [ext_resource type="Script" path="res://scripts/entities/player/Player.gd" id="1_c8031"]
 [ext_resource type="Texture2D" uid="uid://degn8c3cl1sgh" path="res://icon.svg" id="2_xd3ao"]
@@ -11,6 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://iptqau3xprk7" path="res://assets/sounds/hit-by-a-wood-230542.mp3" id="10_goby8"]
 [ext_resource type="AudioStream" uid="uid://cyn7hnj4ry7ai" path="res://assets/sounds/ghook.wav" id="10_xg826"]
 [ext_resource type="AudioStream" uid="uid://eh750yhxj57o" path="res://assets/sounds/retro-coin-4-236671.mp3" id="11_rq33l"]
+[ext_resource type="AudioStream" uid="uid://cs2huhlf1nbax" path="res://assets/sounds/landing.wav" id="12_3hrnd"]
+[ext_resource type="AudioStream" uid="uid://wrg4ybjbn5by" path="res://assets/sounds/health-pickup-6860.mp3" id="13_du5aj"]
 
 [sub_resource type="Animation" id="Animation_5jeks"]
 length = 0.001
@@ -273,5 +275,11 @@ stream = ExtResource("10_xg826")
 
 [node name="CoinSfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_rq33l")
+
+[node name="LandingSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_3hrnd")
+
+[node name="BoostSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_du5aj")
 
 [connection signal="loose_lives" from="HealthController" to="." method="_loose_live"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://6moaj0bk4bpi"]
+[gd_scene load_steps=28 format=3 uid="uid://6moaj0bk4bpi"]
 
 [ext_resource type="PackedScene" uid="uid://jfw74y8eg8hn" path="res://prefabs/Player_prefab.tscn" id="1_7hi53"]
 [ext_resource type="PackedScene" uid="uid://dh2av4d1xjup8" path="res://prefabs/Coin_prefab.tscn" id="1_b21j8"]
 [ext_resource type="PackedScene" uid="uid://hu5sda23sd8d" path="res://prefabs/FireBall_prefab.tscn" id="1_g31d2"]
+[ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_kybki"]
 [ext_resource type="PackedScene" uid="uid://c4ufcefpbg3sy" path="res://prefabs/Booster_prefab.tscn" id="1_lmtrh"]
 [ext_resource type="PackedScene" uid="uid://cujsxvsn7qmw3" path="res://prefabs/DamagableBox_prefab.tscn" id="2_0lr4j"]
 [ext_resource type="PackedScene" uid="uid://b4gj8p53287vt" path="res://prefabs/Spikes_prefab.tscn" id="4_im7ar"]
@@ -12,6 +13,7 @@
 [ext_resource type="Script" path="res://scripts/ui/SpeedRunModule.gd" id="8_4lqte"]
 [ext_resource type="Shader" path="res://assets/shaders/cam_shader.gdshader" id="8_nfn6u"]
 [ext_resource type="PackedScene" uid="uid://7h6yabpfcref" path="res://prefabs/UI/PauseMenu_prefab.tscn" id="13_n3idn"]
+[ext_resource type="AudioStream" uid="uid://cd530hf3pux1q" path="res://assets/music/power-of-the-wind-lofi-153794.mp3" id="14_jakxt"]
 
 [sub_resource type="Gradient" id="Gradient_ef84x"]
 colors = PackedColorArray(0.235294, 0.180392, 0.34902, 1, 0.235294, 0.180392, 0.34902, 1)
@@ -122,6 +124,7 @@ gradient = SubResource("Gradient_m07c4")
 fill_to = Vector2(0, 1)
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_kybki")
 
 [node name="Info" type="Node2D" parent="."]
 position = Vector2(75, 212)
@@ -498,6 +501,11 @@ texture = SubResource("GradientTexture2D_gha4y")
 [node name="PauseMenu" parent="UI2" instance=ExtResource("13_n3idn")]
 
 [node name="PostProc" type="Node2D" parent="."]
+
+[node name="BgMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_jakxt")
+volume_db = -14.307
+parameters/looping = false
 
 [editable path="Map/Interactables/DamageDealers/FireBall2"]
 [editable path="Map/Interactables/DamageDealers/FireBall3"]

@@ -1,8 +1,10 @@
 extends Screen
 
 @onready var start_level = preload("res://scenes/TestScene_DEV.tscn")
+@onready var bg_music = $BackgroundMusic
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	bg_music.play()
 	ScreenManager.open_on_top(self)
 	pass # Replace with function body.
 
